@@ -16,6 +16,8 @@
 		BC2050DA1C67B50300107C73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2050D81C67B50300107C73 /* LaunchScreen.storyboard */; };
 		BC2050E51C67B50300107C73 /* DaMovieQuizzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050E41C67B50300107C73 /* DaMovieQuizzTests.m */; };
 		BC2050F01C67B50300107C73 /* DaMovieQuizzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */; };
+		BC6611741C67BC5200281EC7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6611731C67BC5200281EC7 /* HomeViewController.m */; };
+		BC6611911C67CA9400281EC7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC66118E1C67CA9400281EC7 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		BC2050EB1C67B50300107C73 /* DaMovieQuizzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaMovieQuizzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaMovieQuizzUITests.m; sourceTree = "<group>"; };
 		BC2050F11C67B50300107C73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC6611721C67BC5200281EC7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		BC6611731C67BC5200281EC7 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		BC66118F1C67CA9400281EC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BC6611901C67CA9400281EC7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,8 @@
 		BC2050C61C67B50300107C73 /* DaMovieQuizz */ = {
 			isa = PBXGroup;
 			children = (
+				BC66118D1C67CA9400281EC7 /* Ressources */,
+				BC6611751C67BC5A00281EC7 /* ViewControllers */,
 				BC2050CA1C67B50300107C73 /* AppDelegate.h */,
 				BC2050CB1C67B50300107C73 /* AppDelegate.m */,
 				BC2050CD1C67B50300107C73 /* ViewController.h */,
@@ -141,6 +149,23 @@
 				BC2050F11C67B50300107C73 /* Info.plist */,
 			);
 			path = DaMovieQuizzUITests;
+			sourceTree = "<group>";
+		};
+		BC6611751C67BC5A00281EC7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BC6611721C67BC5200281EC7 /* HomeViewController.h */,
+				BC6611731C67BC5200281EC7 /* HomeViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BC66118D1C67CA9400281EC7 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				BC66118E1C67CA9400281EC7 /* Localizable.strings */,
+			);
+			path = Ressources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +254,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = BC2050BB1C67B50300107C73;
 			productRefGroup = BC2050C51C67B50300107C73 /* Products */;
@@ -248,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC2050DA1C67B50300107C73 /* LaunchScreen.storyboard in Resources */,
+				BC6611911C67CA9400281EC7 /* Localizable.strings in Resources */,
 				BC2050D71C67B50300107C73 /* Assets.xcassets in Resources */,
 				BC2050D21C67B50300107C73 /* Main.storyboard in Resources */,
 			);
@@ -277,6 +304,7 @@
 				BC2050CF1C67B50300107C73 /* ViewController.m in Sources */,
 				BC2050D51C67B50300107C73 /* DaMovieQuizz.xcdatamodeld in Sources */,
 				BC2050CC1C67B50300107C73 /* AppDelegate.m in Sources */,
+				BC6611741C67BC5200281EC7 /* HomeViewController.m in Sources */,
 				BC2050C91C67B50300107C73 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +355,15 @@
 				BC2050D91C67B50300107C73 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BC66118E1C67CA9400281EC7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC66118F1C67CA9400281EC7 /* en */,
+				BC6611901C67CA9400281EC7 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
