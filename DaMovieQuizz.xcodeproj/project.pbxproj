@@ -1,0 +1,542 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC2050C91C67B50300107C73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050C81C67B50300107C73 /* main.m */; };
+		BC2050CC1C67B50300107C73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050CB1C67B50300107C73 /* AppDelegate.m */; };
+		BC2050CF1C67B50300107C73 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050CE1C67B50300107C73 /* ViewController.m */; };
+		BC2050D21C67B50300107C73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2050D01C67B50300107C73 /* Main.storyboard */; };
+		BC2050D51C67B50300107C73 /* DaMovieQuizz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC2050D31C67B50300107C73 /* DaMovieQuizz.xcdatamodeld */; };
+		BC2050D71C67B50300107C73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2050D61C67B50300107C73 /* Assets.xcassets */; };
+		BC2050DA1C67B50300107C73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2050D81C67B50300107C73 /* LaunchScreen.storyboard */; };
+		BC2050E51C67B50300107C73 /* DaMovieQuizzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050E41C67B50300107C73 /* DaMovieQuizzTests.m */; };
+		BC2050F01C67B50300107C73 /* DaMovieQuizzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BC2050E11C67B50300107C73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC2050BC1C67B50300107C73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC2050C31C67B50300107C73;
+			remoteInfo = DaMovieQuizz;
+		};
+		BC2050EC1C67B50300107C73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC2050BC1C67B50300107C73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC2050C31C67B50300107C73;
+			remoteInfo = DaMovieQuizz;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BC2050C41C67B50300107C73 /* DaMovieQuizz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaMovieQuizz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC2050C81C67B50300107C73 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BC2050CA1C67B50300107C73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BC2050CB1C67B50300107C73 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BC2050CD1C67B50300107C73 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BC2050CE1C67B50300107C73 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BC2050D11C67B50300107C73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BC2050D41C67B50300107C73 /* DaMovieQuizz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DaMovieQuizz.xcdatamodel; sourceTree = "<group>"; };
+		BC2050D61C67B50300107C73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC2050D91C67B50300107C73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC2050DB1C67B50300107C73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC2050E01C67B50300107C73 /* DaMovieQuizzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaMovieQuizzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC2050E41C67B50300107C73 /* DaMovieQuizzTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaMovieQuizzTests.m; sourceTree = "<group>"; };
+		BC2050E61C67B50300107C73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC2050EB1C67B50300107C73 /* DaMovieQuizzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaMovieQuizzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaMovieQuizzUITests.m; sourceTree = "<group>"; };
+		BC2050F11C67B50300107C73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC2050C11C67B50300107C73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC2050DD1C67B50300107C73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC2050E81C67B50300107C73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC2050BB1C67B50300107C73 = {
+			isa = PBXGroup;
+			children = (
+				BC2050C61C67B50300107C73 /* DaMovieQuizz */,
+				BC2050E31C67B50300107C73 /* DaMovieQuizzTests */,
+				BC2050EE1C67B50300107C73 /* DaMovieQuizzUITests */,
+				BC2050C51C67B50300107C73 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BC2050C51C67B50300107C73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC2050C41C67B50300107C73 /* DaMovieQuizz.app */,
+				BC2050E01C67B50300107C73 /* DaMovieQuizzTests.xctest */,
+				BC2050EB1C67B50300107C73 /* DaMovieQuizzUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC2050C61C67B50300107C73 /* DaMovieQuizz */ = {
+			isa = PBXGroup;
+			children = (
+				BC2050CA1C67B50300107C73 /* AppDelegate.h */,
+				BC2050CB1C67B50300107C73 /* AppDelegate.m */,
+				BC2050CD1C67B50300107C73 /* ViewController.h */,
+				BC2050CE1C67B50300107C73 /* ViewController.m */,
+				BC2050D01C67B50300107C73 /* Main.storyboard */,
+				BC2050D61C67B50300107C73 /* Assets.xcassets */,
+				BC2050D81C67B50300107C73 /* LaunchScreen.storyboard */,
+				BC2050DB1C67B50300107C73 /* Info.plist */,
+				BC2050D31C67B50300107C73 /* DaMovieQuizz.xcdatamodeld */,
+				BC2050C71C67B50300107C73 /* Supporting Files */,
+			);
+			path = DaMovieQuizz;
+			sourceTree = "<group>";
+		};
+		BC2050C71C67B50300107C73 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC2050C81C67B50300107C73 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BC2050E31C67B50300107C73 /* DaMovieQuizzTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC2050E41C67B50300107C73 /* DaMovieQuizzTests.m */,
+				BC2050E61C67B50300107C73 /* Info.plist */,
+			);
+			path = DaMovieQuizzTests;
+			sourceTree = "<group>";
+		};
+		BC2050EE1C67B50300107C73 /* DaMovieQuizzUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */,
+				BC2050F11C67B50300107C73 /* Info.plist */,
+			);
+			path = DaMovieQuizzUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC2050C31C67B50300107C73 /* DaMovieQuizz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC2050F41C67B50300107C73 /* Build configuration list for PBXNativeTarget "DaMovieQuizz" */;
+			buildPhases = (
+				BC2050C01C67B50300107C73 /* Sources */,
+				BC2050C11C67B50300107C73 /* Frameworks */,
+				BC2050C21C67B50300107C73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DaMovieQuizz;
+			productName = DaMovieQuizz;
+			productReference = BC2050C41C67B50300107C73 /* DaMovieQuizz.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BC2050DF1C67B50300107C73 /* DaMovieQuizzTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC2050F71C67B50300107C73 /* Build configuration list for PBXNativeTarget "DaMovieQuizzTests" */;
+			buildPhases = (
+				BC2050DC1C67B50300107C73 /* Sources */,
+				BC2050DD1C67B50300107C73 /* Frameworks */,
+				BC2050DE1C67B50300107C73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC2050E21C67B50300107C73 /* PBXTargetDependency */,
+			);
+			name = DaMovieQuizzTests;
+			productName = DaMovieQuizzTests;
+			productReference = BC2050E01C67B50300107C73 /* DaMovieQuizzTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BC2050EA1C67B50300107C73 /* DaMovieQuizzUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC2050FA1C67B50300107C73 /* Build configuration list for PBXNativeTarget "DaMovieQuizzUITests" */;
+			buildPhases = (
+				BC2050E71C67B50300107C73 /* Sources */,
+				BC2050E81C67B50300107C73 /* Frameworks */,
+				BC2050E91C67B50300107C73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC2050ED1C67B50300107C73 /* PBXTargetDependency */,
+			);
+			name = DaMovieQuizzUITests;
+			productName = DaMovieQuizzUITests;
+			productReference = BC2050EB1C67B50300107C73 /* DaMovieQuizzUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC2050BC1C67B50300107C73 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Del Carlo Marie-Odile";
+				TargetAttributes = {
+					BC2050C31C67B50300107C73 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = B2C53XFVND;
+					};
+					BC2050DF1C67B50300107C73 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = BC2050C31C67B50300107C73;
+					};
+					BC2050EA1C67B50300107C73 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = BC2050C31C67B50300107C73;
+					};
+				};
+			};
+			buildConfigurationList = BC2050BF1C67B50300107C73 /* Build configuration list for PBXProject "DaMovieQuizz" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC2050BB1C67B50300107C73;
+			productRefGroup = BC2050C51C67B50300107C73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC2050C31C67B50300107C73 /* DaMovieQuizz */,
+				BC2050DF1C67B50300107C73 /* DaMovieQuizzTests */,
+				BC2050EA1C67B50300107C73 /* DaMovieQuizzUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC2050C21C67B50300107C73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC2050DA1C67B50300107C73 /* LaunchScreen.storyboard in Resources */,
+				BC2050D71C67B50300107C73 /* Assets.xcassets in Resources */,
+				BC2050D21C67B50300107C73 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC2050DE1C67B50300107C73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC2050E91C67B50300107C73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC2050C01C67B50300107C73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC2050CF1C67B50300107C73 /* ViewController.m in Sources */,
+				BC2050D51C67B50300107C73 /* DaMovieQuizz.xcdatamodeld in Sources */,
+				BC2050CC1C67B50300107C73 /* AppDelegate.m in Sources */,
+				BC2050C91C67B50300107C73 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC2050DC1C67B50300107C73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC2050E51C67B50300107C73 /* DaMovieQuizzTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC2050E71C67B50300107C73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC2050F01C67B50300107C73 /* DaMovieQuizzUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC2050E21C67B50300107C73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC2050C31C67B50300107C73 /* DaMovieQuizz */;
+			targetProxy = BC2050E11C67B50300107C73 /* PBXContainerItemProxy */;
+		};
+		BC2050ED1C67B50300107C73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC2050C31C67B50300107C73 /* DaMovieQuizz */;
+			targetProxy = BC2050EC1C67B50300107C73 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BC2050D01C67B50300107C73 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC2050D11C67B50300107C73 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BC2050D81C67B50300107C73 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC2050D91C67B50300107C73 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC2050F21C67B50300107C73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BC2050F31C67B50300107C73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC2050F51C67B50300107C73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = DaMovieQuizz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marieodile.delcarlo.DaMovieQuizz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BC2050F61C67B50300107C73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = DaMovieQuizz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marieodile.delcarlo.DaMovieQuizz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BC2050F81C67B50300107C73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DaMovieQuizzTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marieodile.delcarlo.DaMovieQuizzTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaMovieQuizz.app/DaMovieQuizz";
+			};
+			name = Debug;
+		};
+		BC2050F91C67B50300107C73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DaMovieQuizzTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marieodile.delcarlo.DaMovieQuizzTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaMovieQuizz.app/DaMovieQuizz";
+			};
+			name = Release;
+		};
+		BC2050FB1C67B50300107C73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DaMovieQuizzUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marieodile.delcarlo.DaMovieQuizzUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DaMovieQuizz;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		BC2050FC1C67B50300107C73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DaMovieQuizzUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marieodile.delcarlo.DaMovieQuizzUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DaMovieQuizz;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC2050BF1C67B50300107C73 /* Build configuration list for PBXProject "DaMovieQuizz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC2050F21C67B50300107C73 /* Debug */,
+				BC2050F31C67B50300107C73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC2050F41C67B50300107C73 /* Build configuration list for PBXNativeTarget "DaMovieQuizz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC2050F51C67B50300107C73 /* Debug */,
+				BC2050F61C67B50300107C73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC2050F71C67B50300107C73 /* Build configuration list for PBXNativeTarget "DaMovieQuizzTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC2050F81C67B50300107C73 /* Debug */,
+				BC2050F91C67B50300107C73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC2050FA1C67B50300107C73 /* Build configuration list for PBXNativeTarget "DaMovieQuizzUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC2050FB1C67B50300107C73 /* Debug */,
+				BC2050FC1C67B50300107C73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BC2050D31C67B50300107C73 /* DaMovieQuizz.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BC2050D41C67B50300107C73 /* DaMovieQuizz.xcdatamodel */,
+			);
+			currentVersion = BC2050D41C67B50300107C73 /* DaMovieQuizz.xcdatamodel */;
+			path = DaMovieQuizz.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BC2050BC1C67B50300107C73 /* Project object */;
+}
