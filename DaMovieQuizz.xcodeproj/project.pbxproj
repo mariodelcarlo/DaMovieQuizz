@@ -16,6 +16,7 @@
 		BC2050DA1C67B50300107C73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2050D81C67B50300107C73 /* LaunchScreen.storyboard */; };
 		BC2050E51C67B50300107C73 /* DaMovieQuizzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050E41C67B50300107C73 /* DaMovieQuizzTests.m */; };
 		BC2050F01C67B50300107C73 /* DaMovieQuizzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */; };
+		BC567B5B2506CAD9A71F631B /* libPods-DaMovieQuizz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD94070270C8DED656A42CA /* libPods-DaMovieQuizz.a */; };
 		BC6611741C67BC5200281EC7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6611731C67BC5200281EC7 /* HomeViewController.m */; };
 		BC6611911C67CA9400281EC7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC66118E1C67CA9400281EC7 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		817B528C67C1B9223F0C58E5 /* Pods-DaMovieQuizz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaMovieQuizz.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaMovieQuizz/Pods-DaMovieQuizz.release.xcconfig"; sourceTree = "<group>"; };
+		8FD94070270C8DED656A42CA /* libPods-DaMovieQuizz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DaMovieQuizz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2050C41C67B50300107C73 /* DaMovieQuizz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaMovieQuizz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2050C81C67B50300107C73 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC2050CA1C67B50300107C73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 		BC6611731C67BC5200281EC7 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		BC66118F1C67CA9400281EC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC6611901C67CA9400281EC7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA8CE6477A6367186BBD5A1F /* Pods-DaMovieQuizz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaMovieQuizz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaMovieQuizz/Pods-DaMovieQuizz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC567B5B2506CAD9A71F631B /* libPods-DaMovieQuizz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AC7A05EAD7341F55E0BFC8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FD94070270C8DED656A42CA /* libPods-DaMovieQuizz.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BC2050BB1C67B50300107C73 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +106,8 @@
 				BC2050E31C67B50300107C73 /* DaMovieQuizzTests */,
 				BC2050EE1C67B50300107C73 /* DaMovieQuizzUITests */,
 				BC2050C51C67B50300107C73 /* Products */,
+				F3ADB487B5FA8921DD8C445D /* Pods */,
+				4AC7A05EAD7341F55E0BFC8E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +183,15 @@
 			path = Ressources;
 			sourceTree = "<group>";
 		};
+		F3ADB487B5FA8921DD8C445D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA8CE6477A6367186BBD5A1F /* Pods-DaMovieQuizz.debug.xcconfig */,
+				817B528C67C1B9223F0C58E5 /* Pods-DaMovieQuizz.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -175,9 +199,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC2050F41C67B50300107C73 /* Build configuration list for PBXNativeTarget "DaMovieQuizz" */;
 			buildPhases = (
+				C27D023687387E2F9611EA6B /* Check Pods Manifest.lock */,
 				BC2050C01C67B50300107C73 /* Sources */,
 				BC2050C11C67B50300107C73 /* Frameworks */,
 				BC2050C21C67B50300107C73 /* Resources */,
+				D906129D7DF629601F6EFADC /* Embed Pods Frameworks */,
+				06122C9F40C775D1A5C42BD3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,6 +322,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06122C9F40C775D1A5C42BD3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaMovieQuizz/Pods-DaMovieQuizz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C27D023687387E2F9611EA6B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D906129D7DF629601F6EFADC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaMovieQuizz/Pods-DaMovieQuizz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC2050C01C67B50300107C73 /* Sources */ = {
@@ -451,6 +526,7 @@
 		};
 		BC2050F51C67B50300107C73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA8CE6477A6367186BBD5A1F /* Pods-DaMovieQuizz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -464,6 +540,7 @@
 		};
 		BC2050F61C67B50300107C73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 817B528C67C1B9223F0C58E5 /* Pods-DaMovieQuizz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

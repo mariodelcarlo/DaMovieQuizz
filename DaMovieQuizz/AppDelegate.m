@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <JLTMDbClient.h>
+
 
 @interface AppDelegate ()
 
@@ -16,7 +18,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    // Set API key for JLTMDbClient
+    [[JLTMDbClient sharedAPIInstance] setAPIKey:@"597059ecc39cecfe893d731743814205"];
+    [self loadPerson];
     return YES;
 }
 
@@ -124,4 +128,28 @@
     }
 }
 
+
+#pragma mark - Temporary
+//Temporary, test how to works JLTMDbClient
+- (void) loadPerson {
+    [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbPersonPopular withParameters:@{@"page":@1} andResponseBlock:^(id response, NSError *error) {
+        if (!error){
+            NSArray * names = response[@"results"];
+            if(names != nil){
+                for(int i=0; i<names.count;i++){
+                    NSLog(@"%@-%@",names[i][@"id"], names[i][@"name"]);
+                    NSArray *films = names[i][@"known_for"];
+                    for(int j=0; j<films.count;j++){
+                        NSLog(@"**-%@-%@",films[j][@"id"], films[j][@"title"]);
+                    }
+                }
+            }
+            
+            NSLog(@"%@",response[@"results"]);
+            //NSLog(@"%lu",(unsigned long)((NSArray *)response[@"results"]).count);
+        }
+        else
+            NSLog(@"Can't find person");
+    }];
+}
 @end
