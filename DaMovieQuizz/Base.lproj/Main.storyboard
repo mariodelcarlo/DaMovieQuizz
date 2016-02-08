@@ -30,6 +30,9 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="0.40784313729999999" green="0.73725490199999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="g7n-LT-dJg" kind="show" id="KYW-5v-bJ2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.98431372549019602" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,6 +75,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WDq-AS-uYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="163" y="-157"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="xsT-ad-STs">
+            <objects>
+                <viewController id="g7n-LT-dJg" customClass="GameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CcA-BA-gNI"/>
+                        <viewControllerLayoutGuide type="bottom" id="0xy-bp-32z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FSa-WR-Kh5">
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="1136"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpd-gl-0Bz">
+                                <rect key="frame" x="278" y="94" width="84" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="34"/>
+                                <color key="textColor" red="0.40784313729999999" green="0.73725490199999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="FSj-gr-NmF">
+                                <rect key="frame" x="302" y="550" width="37" height="37"/>
+                                <color key="color" red="0.40784313729999999" green="0.73725490199999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FSj-gr-NmF" firstAttribute="centerY" secondItem="FSa-WR-Kh5" secondAttribute="centerY" id="9rL-ky-L0R"/>
+                            <constraint firstItem="zpd-gl-0Bz" firstAttribute="centerY" secondItem="FSa-WR-Kh5" secondAttribute="centerY" multiplier="0.2" id="GaY-KK-68q"/>
+                            <constraint firstItem="zpd-gl-0Bz" firstAttribute="centerX" secondItem="FSa-WR-Kh5" secondAttribute="centerX" id="XqX-dJ-Ec9"/>
+                            <constraint firstItem="FSj-gr-NmF" firstAttribute="centerX" secondItem="FSa-WR-Kh5" secondAttribute="centerX" id="zHR-Co-Hhr"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="640" height="1136"/>
+                    <connections>
+                        <outlet property="waitingActivity" destination="FSj-gr-NmF" id="dhy-wn-Z1d"/>
+                        <outlet property="waitingLabel" destination="zpd-gl-0Bz" id="cNn-dG-GNR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="00u-Gq-zaz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="968" y="1161"/>
         </scene>
     </scenes>
 </document>

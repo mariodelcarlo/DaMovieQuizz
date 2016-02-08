@@ -8,10 +8,9 @@
 
 #import "AppDelegate.h"
 #import <JLTMDbClient.h>
-
+#import "TMDBDownloaderOperation.h"
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
@@ -20,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Set API key for JLTMDbClient
     [[JLTMDbClient sharedAPIInstance] setAPIKey:@"597059ecc39cecfe893d731743814205"];
-    [self loadPerson];
+    
     return YES;
 }
 

@@ -9,3 +9,7 @@
 //HomeViewController
 "homeViewContollerTitleLabel" = "Da Movie Quizz";
 "homeViewContollerPlayButton" = "Jouer";
+
+
+//GameViewController
+"gameViewControllerWaitingLabel" = "Chargement du jeu";
