@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BC2050C91C67B50300107C73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050C81C67B50300107C73 /* main.m */; };
 		BC2050CC1C67B50300107C73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050CB1C67B50300107C73 /* AppDelegate.m */; };
-		BC2050CF1C67B50300107C73 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050CE1C67B50300107C73 /* ViewController.m */; };
 		BC2050D21C67B50300107C73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2050D01C67B50300107C73 /* Main.storyboard */; };
 		BC2050D51C67B50300107C73 /* DaMovieQuizz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC2050D31C67B50300107C73 /* DaMovieQuizz.xcdatamodeld */; };
 		BC2050D71C67B50300107C73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2050D61C67B50300107C73 /* Assets.xcassets */; };
@@ -51,8 +50,6 @@
 		BC2050C81C67B50300107C73 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC2050CA1C67B50300107C73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC2050CB1C67B50300107C73 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BC2050CD1C67B50300107C73 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BC2050CE1C67B50300107C73 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BC2050D11C67B50300107C73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC2050D41C67B50300107C73 /* DaMovieQuizz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DaMovieQuizz.xcdatamodel; sourceTree = "<group>"; };
 		BC2050D61C67B50300107C73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,8 +144,6 @@
 				BC6611751C67BC5A00281EC7 /* ViewControllers */,
 				BC2050CA1C67B50300107C73 /* AppDelegate.h */,
 				BC2050CB1C67B50300107C73 /* AppDelegate.m */,
-				BC2050CD1C67B50300107C73 /* ViewController.h */,
-				BC2050CE1C67B50300107C73 /* ViewController.m */,
 				BC2050D01C67B50300107C73 /* Main.storyboard */,
 				BC2050D61C67B50300107C73 /* Assets.xcassets */,
 				BC2050D81C67B50300107C73 /* LaunchScreen.storyboard */,
@@ -414,7 +409,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC2050CF1C67B50300107C73 /* ViewController.m in Sources */,
 				BC725D381C68F57B002A6DD5 /* GameViewController.m in Sources */,
 				BC725D351C68E845002A6DD5 /* Actor.m in Sources */,
 				BC2050D51C67B50300107C73 /* DaMovieQuizz.xcdatamodeld in Sources */,
