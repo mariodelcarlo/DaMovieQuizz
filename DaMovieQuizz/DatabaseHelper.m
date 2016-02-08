@@ -34,7 +34,7 @@
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
     
-    for(int i=0; i<objects.count;i++){
+    /*for(int i=0; i<objects.count;i++){
         Actor * actor = objects[i];
         NSLog(@"------ACTEUR->%@ %lld",actor.name,actor.tmdbId);
         
@@ -43,7 +43,7 @@
             NSLog(@"MOVIE->%@ %lld",movie.title, movie.tmdbId);
         }
     }
-    
+    */
     return objects;
 }
 
@@ -58,6 +58,7 @@
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
     
+    /*
     for(int i=0; i<objects.count;i++){
         Movie * movie = objects[i];
         NSLog(@"------Movie->%@ %lld",movie.title,movie.tmdbId);
@@ -67,6 +68,7 @@
             NSLog(@"ACTOR->%@ %lld",actor.name, actor.tmdbId);
         }
     }
+     */
     
     return objects;
 }
