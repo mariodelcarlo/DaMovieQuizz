@@ -11,4 +11,5 @@
 @interface DatabaseHelper : NSObject
 + (id)sharedInstance;
 - (NSArray *)getActors;
+- (NSArray *)getMovies;
 @end

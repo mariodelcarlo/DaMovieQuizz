@@ -37,12 +37,29 @@
              
              NSArray *knownFor = actors[i][@"known_for"];
              for(int j=0; j<knownFor.count;j++){
-                 Movie * newMovie = [NSEntityDescription insertNewObjectForEntityForName:@"Movie" inManagedObjectContext:self.threadContext];
-                 newMovie.tmdbId = [knownFor[j][@"id"] intValue];
-                 newMovie.title = knownFor[j][@"title"];
-                 newMovie.mediaType = knownFor[j][@"media_type"];
-                 newMovie.posterPath = knownFor[j][@"poster_path"];
-                 [newActor addMoviesObject:newMovie];
+                 //Check if the movie already exists
+                 NSFetchRequest * requestMovie = [[NSFetchRequest alloc] initWithEntityName:@"Movie"];
+                 NSPredicate * moviePredicate = [NSPredicate predicateWithFormat:@"tmdbId == %d",[knownFor[j][@"id"] intValue]];
+                 [requestMovie setPredicate:moviePredicate];
+                 NSError *movieError;
+                 NSArray *objects = [self.threadContext executeFetchRequest:requestMovie error:&movieError];
+                 if([objects count] == 0){
+                     NSLog(@"Will insert movie %@",knownFor[j][@"title"]);
+                     Movie * newMovie = [NSEntityDescription insertNewObjectForEntityForName:@"Movie" inManagedObjectContext:self.threadContext];
+                     newMovie.tmdbId = [knownFor[j][@"id"] intValue];
+                     newMovie.title = knownFor[j][@"title"];
+                     newMovie.mediaType = knownFor[j][@"media_type"];
+                     newMovie.posterPath = knownFor[j][@"poster_path"];
+                     [newActor addMoviesObject:newMovie];
+                 }
+                 else if ([objects count] == 1){
+                     NSLog(@"ALREADY EXISTS %@",knownFor[j][@"title"]);
+                     Movie * newMovie = objects[0];
+                     [newActor addMoviesObject:newMovie];
+                 }
+                 else{
+                     NSLog(@"GROS PB");
+                 }
                  //NSLog(@"**%@-%@",knownFor[j][@"id"], knownFor[j][@"title"]);
              }
          }
@@ -60,7 +77,6 @@
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbPersonPopular withParameters:@{@"page":[NSNumber numberWithInt:page]} andResponseBlock:^(id response, NSError *error) {
         if (!error){
             NSArray * actors = response[@"results"];
-            //NSLog(@"%@",actors);
             if(actors != nil){
                 callback(actors);
                 if(self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailedTMDBDownloadWithError:)]){

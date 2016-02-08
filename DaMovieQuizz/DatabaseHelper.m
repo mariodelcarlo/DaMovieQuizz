@@ -47,5 +47,28 @@
     return objects;
 }
 
+//Returns an array of Movies
+- (NSArray *)getMovies{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Movie" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc]init];
+    [request setEntity:entityDesc];
+    
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    for(int i=0; i<objects.count;i++){
+        Movie * movie = objects[i];
+        NSLog(@"------Movie->%@ %lld",movie.title,movie.tmdbId);
+        
+        NSSet * actors = movie.actors;
+        for(Actor * actor in actors){
+            NSLog(@"ACTOR->%@ %lld",actor.name, actor.tmdbId);
+        }
+    }
+    
+    return objects;
+}
 
 @end

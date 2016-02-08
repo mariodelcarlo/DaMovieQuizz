@@ -57,6 +57,7 @@
     
 - (void)didFinishDownloading{
     NSLog(@"NB ACTORS=%d",[[[DatabaseHelper sharedInstance] getActors] count]);
+    NSLog(@"NB FILMS %d",[[[DatabaseHelper sharedInstance] getMovies] count]);
     self.isDownloading = NO;
     [self hideWaitingUIElements:YES];
 }
