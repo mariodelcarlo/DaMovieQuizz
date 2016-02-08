@@ -24,6 +24,7 @@
 		BC725D341C68E845002A6DD5 /* Actor+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D2F1C68E845002A6DD5 /* Actor+CoreDataProperties.m */; };
 		BC725D351C68E845002A6DD5 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D311C68E845002A6DD5 /* Actor.m */; };
 		BC725D381C68F57B002A6DD5 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D371C68F57B002A6DD5 /* GameViewController.m */; };
+		BC725D3C1C68FC40002A6DD5 /* DatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D3B1C68FC40002A6DD5 /* DatabaseHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		BC725D311C68E845002A6DD5 /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Actor.m; sourceTree = "<group>"; };
 		BC725D361C68F57B002A6DD5 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		BC725D371C68F57B002A6DD5 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		BC725D3A1C68FC40002A6DD5 /* DatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseHelper.h; sourceTree = "<group>"; };
+		BC725D3B1C68FC40002A6DD5 /* DatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseHelper.m; sourceTree = "<group>"; };
 		CA8CE6477A6367186BBD5A1F /* Pods-DaMovieQuizz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaMovieQuizz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaMovieQuizz/Pods-DaMovieQuizz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +211,8 @@
 				BC725D2E1C68E845002A6DD5 /* Actor+CoreDataProperties.h */,
 				BC725D2F1C68E845002A6DD5 /* Actor+CoreDataProperties.m */,
 				BC2050D31C67B50300107C73 /* DaMovieQuizz.xcdatamodeld */,
+				BC725D3A1C68FC40002A6DD5 /* DatabaseHelper.h */,
+				BC725D3B1C68FC40002A6DD5 /* DatabaseHelper.m */,
 				BC725D2C1C68E845002A6DD5 /* Movie.h */,
 				BC725D2D1C68E845002A6DD5 /* Movie.m */,
 				BC725D2A1C68E819002A6DD5 /* Movie+CoreDataProperties.h */,
@@ -418,6 +423,7 @@
 				BC2050CC1C67B50300107C73 /* AppDelegate.m in Sources */,
 				BC725D341C68E845002A6DD5 /* Actor+CoreDataProperties.m in Sources */,
 				BC6611741C67BC5200281EC7 /* HomeViewController.m in Sources */,
+				BC725D3C1C68FC40002A6DD5 /* DatabaseHelper.m in Sources */,
 				BC2050C91C67B50300107C73 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

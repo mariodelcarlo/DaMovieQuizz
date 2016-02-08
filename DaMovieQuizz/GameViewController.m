@@ -10,33 +10,39 @@
 #import "TMDBDownloaderOperation.h"
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
+#import "DatabaseHelper.h"
 
 @interface GameViewController () <TMDBDownloaderDelegate>
 @property(nonatomic, retain) NSOperationQueue *tmdbQueue;
 @property (weak, nonatomic) IBOutlet UILabel *waitingLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *waitingActivity;
+@property (nonatomic, assign)BOOL isDownloading;
 
 @end
 
 @implementation GameViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.isDownloading = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contextDidSave:) name:NSManagedObjectContextDidSaveNotification object:nil];
     
-    //Start download
-    self.tmdbQueue = [[NSOperationQueue alloc] init];
-    TMDBDownloaderOperation * downloadOp = [[TMDBDownloaderOperation alloc] init];
-    downloadOp.delegate =  self;
-    [self.tmdbQueue addOperation:downloadOp];
+    //Start download if there is no actor in database
+    if([[[DatabaseHelper sharedInstance] getActors] count] == 0){
+        NSLog(@"START DOWNLOADING");
+        self.tmdbQueue = [[NSOperationQueue alloc] init];
+        TMDBDownloaderOperation * downloadOp = [[TMDBDownloaderOperation alloc] init];
+        downloadOp.delegate =  self;
+        [self.tmdbQueue addOperation:downloadOp];
+        self.isDownloading = YES;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.waitingActivity startAnimating];
-    [self.waitingLabel setText:NSLocalizedString(@"gameViewControllerWaitingLabel", @"")];
+    [self hideWaitingUIElements:!self.isDownloading];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,18 +52,16 @@
 
 #pragma mark MDBDownloaderDelegate
 - (void)didFailedTMDBDownloadWithError:(NSError *)error{
-    
+    //TODO
 }
     
 - (void)didFinishDownloading{
-    NSLog(@"didFinishDownloading");
-    //TO REMOVE
-    [self listActors];
-    [self.waitingActivity stopAnimating];
-    self.waitingLabel.alpha = 0;
+    NSLog(@"NB ACTORS=%d",[[[DatabaseHelper sharedInstance] getActors] count]);
+    self.isDownloading = NO;
+    [self hideWaitingUIElements:YES];
 }
 
-
+#pragma mark NSManagedObjectContext notification
 -(void)contextDidSave:(NSNotification *)notification{
     NSManagedObjectContext * sender = notification.object;
     AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
@@ -69,18 +73,19 @@
     }
 }
 
-//Temporary to remove
--(void)listActors{
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Actor" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc]init];
-    [request setEntity:entityDesc];
-    
-    NSError *error;
-    NSArray *objects = [context executeFetchRequest:request error:&error];
-    NSUInteger nbActors = [objects count];
-    
-    NSLog(@"NB ACTORS + %d",nbActors);
+#pragma mark utils
+//Hide or display the UI Elements about waiting the download of elements in database
+- (void)hideWaitingUIElements:(BOOL)mustHide{
+    if(mustHide){
+        [self.waitingActivity stopAnimating];
+        self.waitingActivity.alpha = 0;
+        self.waitingLabel.alpha = 0;
+    }
+    else{
+        [self.waitingActivity startAnimating];
+        self.waitingActivity.alpha = 1;
+        self.waitingLabel.alpha = 1;
+        [self.waitingLabel setText:NSLocalizedString(@"gameViewControllerWaitingLabel", @"")];
+    }
 }
 @end
