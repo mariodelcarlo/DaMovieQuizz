@@ -8,6 +8,8 @@
 
 #import "DatabaseHelper.h"
 #import "AppDelegate.h"
+#import "Actor.h"
+#import "Movie.h"
 
 @implementation DatabaseHelper
 
@@ -31,6 +33,16 @@
     
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    for(int i=0; i<objects.count;i++){
+        Actor * actor = objects[i];
+        NSLog(@"------ACTEUR->%@ %lld",actor.name,actor.tmdbId);
+        
+        NSSet * movies = actor.movies;
+        for(Movie * movie in movies){
+            NSLog(@"MOVIE->%@ %lld",movie.title, movie.tmdbId);
+        }
+    }
     
     return objects;
 }

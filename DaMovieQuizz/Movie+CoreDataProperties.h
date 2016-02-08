@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Movie (CoreDataProperties)
 
-@property (nonatomic) int16_t tmdbId;
+@property (nonatomic) int64_t tmdbId;
 @property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSString *mediaType;
 @property (nullable, nonatomic, retain) NSString *posterPath;

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Actor (CoreDataProperties)
 
-@property (nonatomic) int16_t tmdbId;
+@property (nonatomic) int64_t tmdbId;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSSet<Movie *> *movies;
 

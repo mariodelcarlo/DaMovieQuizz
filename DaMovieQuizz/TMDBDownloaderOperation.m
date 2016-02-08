@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Appdelegate.h"
 #import "Actor.h"
-
+#import "Movie.h"
 
 
 @implementation TMDBDownloaderOperation
@@ -33,18 +33,23 @@
              Actor * newActor = [NSEntityDescription insertNewObjectForEntityForName:@"Actor" inManagedObjectContext:self.threadContext];
              newActor.tmdbId = [actors[i][@"id"] intValue];
              newActor.name = actors[i][@"name"];
+             //NSLog(@"--%@ %@",actors[i][@"name"],actors[i][@"id"]);
              
-             NSLog(@"%@-%@",actors[i][@"id"], actors[i][@"name"]);
-             NSArray *films = actors[i][@"known_for"];
-             for(int j=0; j<films.count;j++){
-                 NSLog(@"**-%@-%@",films[j][@"id"], films[j][@"title"]);
+             NSArray *knownFor = actors[i][@"known_for"];
+             for(int j=0; j<knownFor.count;j++){
+                 Movie * newMovie = [NSEntityDescription insertNewObjectForEntityForName:@"Movie" inManagedObjectContext:self.threadContext];
+                 newMovie.tmdbId = [knownFor[j][@"id"] intValue];
+                 newMovie.title = knownFor[j][@"title"];
+                 newMovie.mediaType = knownFor[j][@"media_type"];
+                 newMovie.posterPath = knownFor[j][@"poster_path"];
+                 [newActor addMoviesObject:newMovie];
+                 //NSLog(@"**%@-%@",knownFor[j][@"id"], knownFor[j][@"title"]);
              }
-             
-             //save
-             if (self.threadContext.hasChanges){
-                 NSError * error = nil;
-                 [self.threadContext save:&error];
-             }
+         }
+         //save
+         if (self.threadContext.hasChanges){
+             NSError * error = nil;
+             [self.threadContext save:&error];
          }
      }
      ];
@@ -52,12 +57,11 @@
 
 
 - (void)fetchFamousActors:(void (^)(NSArray *actors))callback forPage:(int)page{
-    NSLog(@"fetchFamousActors page=%d",page);
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbPersonPopular withParameters:@{@"page":[NSNumber numberWithInt:page]} andResponseBlock:^(id response, NSError *error) {
         if (!error){
             NSArray * actors = response[@"results"];
+            //NSLog(@"%@",actors);
             if(actors != nil){
-                NSLog(@"ACTORS %d",[actors count]);
                 callback(actors);
                 if(self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailedTMDBDownloadWithError:)]){
                     [self.delegate didFinishDownloading];
