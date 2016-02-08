@@ -25,6 +25,9 @@
 		BC725D351C68E845002A6DD5 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D311C68E845002A6DD5 /* Actor.m */; };
 		BC725D381C68F57B002A6DD5 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D371C68F57B002A6DD5 /* GameViewController.m */; };
 		BC725D3C1C68FC40002A6DD5 /* DatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D3B1C68FC40002A6DD5 /* DatabaseHelper.m */; };
+		BCE78D181C6912E9001C98C8 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE78D171C6912E9001C98C8 /* Game.m */; };
+		BCE78D1B1C691457001C98C8 /* GameStep.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE78D1A1C691457001C98C8 /* GameStep.m */; };
+		BCE78D1E1C69159F001C98C8 /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE78D1D1C69159F001C98C8 /* GameLogic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,12 @@
 		BC725D371C68F57B002A6DD5 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		BC725D3A1C68FC40002A6DD5 /* DatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseHelper.h; sourceTree = "<group>"; };
 		BC725D3B1C68FC40002A6DD5 /* DatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseHelper.m; sourceTree = "<group>"; };
+		BCE78D161C6912E9001C98C8 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		BCE78D171C6912E9001C98C8 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		BCE78D191C691457001C98C8 /* GameStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStep.h; sourceTree = "<group>"; };
+		BCE78D1A1C691457001C98C8 /* GameStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStep.m; sourceTree = "<group>"; };
+		BCE78D1C1C69159F001C98C8 /* GameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLogic.h; sourceTree = "<group>"; };
+		BCE78D1D1C69159F001C98C8 /* GameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLogic.m; sourceTree = "<group>"; };
 		CA8CE6477A6367186BBD5A1F /* Pods-DaMovieQuizz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaMovieQuizz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaMovieQuizz/Pods-DaMovieQuizz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,7 +151,9 @@
 		BC2050C61C67B50300107C73 /* DaMovieQuizz */ = {
 			isa = PBXGroup;
 			children = (
+				BCE78D151C691299001C98C8 /* Game */,
 				BC66118D1C67CA9400281EC7 /* Ressources */,
+				BCE78D141C69127A001C98C8 /* Utils */,
 				BC725D1D1C68E78B002A6DD5 /* Database */,
 				BC6611751C67BC5A00281EC7 /* ViewControllers */,
 				BC2050CA1C67B50300107C73 /* AppDelegate.h */,
@@ -152,8 +163,6 @@
 				BC2050D81C67B50300107C73 /* LaunchScreen.storyboard */,
 				BC2050DB1C67B50300107C73 /* Info.plist */,
 				BC2050C71C67B50300107C73 /* Supporting Files */,
-				BC725D1A1C68E1BF002A6DD5 /* TMDBDownloaderOperation.h */,
-				BC725D1B1C68E1BF002A6DD5 /* TMDBDownloaderOperation.m */,
 			);
 			path = DaMovieQuizz;
 			sourceTree = "<group>";
@@ -219,6 +228,28 @@
 				BC725D2B1C68E845002A6DD5 /* Movie+CoreDataProperties.m */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		BCE78D141C69127A001C98C8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BC725D1A1C68E1BF002A6DD5 /* TMDBDownloaderOperation.h */,
+				BC725D1B1C68E1BF002A6DD5 /* TMDBDownloaderOperation.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		BCE78D151C691299001C98C8 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				BCE78D161C6912E9001C98C8 /* Game.h */,
+				BCE78D171C6912E9001C98C8 /* Game.m */,
+				BCE78D191C691457001C98C8 /* GameStep.h */,
+				BCE78D1A1C691457001C98C8 /* GameStep.m */,
+				BCE78D1C1C69159F001C98C8 /* GameLogic.h */,
+				BCE78D1D1C69159F001C98C8 /* GameLogic.m */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 		F3ADB487B5FA8921DD8C445D /* Pods */ = {
@@ -417,12 +448,15 @@
 				BC725D381C68F57B002A6DD5 /* GameViewController.m in Sources */,
 				BC725D351C68E845002A6DD5 /* Actor.m in Sources */,
 				BC2050D51C67B50300107C73 /* DaMovieQuizz.xcdatamodeld in Sources */,
+				BCE78D181C6912E9001C98C8 /* Game.m in Sources */,
 				BC725D331C68E845002A6DD5 /* Movie.m in Sources */,
 				BC725D321C68E845002A6DD5 /* Movie+CoreDataProperties.m in Sources */,
+				BCE78D1E1C69159F001C98C8 /* GameLogic.m in Sources */,
 				BC725D1C1C68E1BF002A6DD5 /* TMDBDownloaderOperation.m in Sources */,
 				BC2050CC1C67B50300107C73 /* AppDelegate.m in Sources */,
 				BC725D341C68E845002A6DD5 /* Actor+CoreDataProperties.m in Sources */,
 				BC6611741C67BC5200281EC7 /* HomeViewController.m in Sources */,
+				BCE78D1B1C691457001C98C8 /* GameStep.m in Sources */,
 				BC725D3C1C68FC40002A6DD5 /* DatabaseHelper.m in Sources */,
 				BC2050C91C67B50300107C73 /* main.m in Sources */,
 			);

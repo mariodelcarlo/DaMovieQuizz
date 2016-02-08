@@ -8,8 +8,7 @@
 
 #import "DatabaseHelper.h"
 #import "AppDelegate.h"
-#import "Actor.h"
-#import "Movie.h"
+
 
 @implementation DatabaseHelper
 
@@ -71,6 +70,31 @@
      */
     
     return objects;
+}
+
+//Generate a random number between 2 bounds, bounds are included
+- (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max{
+    //arc4random_uniform returns value between 0 and the bounds set in parameter
+    return min + arc4random_uniform((int)max - (int)min + 1);
+}
+
+-(Actor *)getRandomActor{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSFetchRequest *myRequest = [[NSFetchRequest alloc] init];
+    [myRequest setEntity: [NSEntityDescription entityForName:@"Actor" inManagedObjectContext:context]];
+    
+    NSError *error = nil;
+    NSUInteger myEntityCount = [context countForFetchRequest:myRequest error:&error];
+    
+    NSUInteger offset = [self randomNumberBetween:0 maxNumber:myEntityCount-1];
+    [myRequest setFetchOffset:offset];
+    [myRequest setFetchLimit:1];
+    
+    NSArray* objects = [context executeFetchRequest:myRequest error:&error];
+    id randomObject = [objects objectAtIndex:0];
+    
+    return (Actor*)randomObject;
 }
 
 @end

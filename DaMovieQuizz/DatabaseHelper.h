@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Actor.h"
+#import "Movie.h"
 
 @interface DatabaseHelper : NSObject
 + (id)sharedInstance;
 - (NSArray *)getActors;
 - (NSArray *)getMovies;
+-(Actor*)getRandomActor;
 @end

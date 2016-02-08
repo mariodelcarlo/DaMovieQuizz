@@ -11,12 +11,21 @@
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 #import "DatabaseHelper.h"
+#import "GameLogic.h"
 
 @interface GameViewController () <TMDBDownloaderDelegate>
-@property(nonatomic, retain) NSOperationQueue *tmdbQueue;
+
 @property (weak, nonatomic) IBOutlet UILabel *waitingLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *waitingActivity;
+
+//Game logic
+@property (nonatomic, retain)GameLogic *gameLogic;
+
+//is currently downloadinf datas
 @property (nonatomic, assign)BOOL isDownloading;
+
+//Queue containing database updates (downloading from TMDB)
+@property(nonatomic, retain) NSOperationQueue *tmdbQueue;
 
 @end
 
@@ -31,7 +40,6 @@
     
     //Start download if there is no actor in database
     if([[[DatabaseHelper sharedInstance] getActors] count] == 0){
-        NSLog(@"START DOWNLOADING");
         self.tmdbQueue = [[NSOperationQueue alloc] init];
         TMDBDownloaderOperation * downloadOp = [[TMDBDownloaderOperation alloc] init];
         downloadOp.delegate =  self;
@@ -43,6 +51,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self hideWaitingUIElements:!self.isDownloading];
+    if(!self.isDownloading){
+        [self startGame];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,6 +71,8 @@
     NSLog(@"NB FILMS %d",[[[DatabaseHelper sharedInstance] getMovies] count]);
     self.isDownloading = NO;
     [self hideWaitingUIElements:YES];
+    [self startGame];
+    
 }
 
 #pragma mark NSManagedObjectContext notification
@@ -74,7 +87,7 @@
     }
 }
 
-#pragma mark utils
+#pragma mark private methods
 //Hide or display the UI Elements about waiting the download of elements in database
 - (void)hideWaitingUIElements:(BOOL)mustHide{
     if(mustHide){
@@ -89,4 +102,11 @@
         [self.waitingLabel setText:NSLocalizedString(@"gameViewControllerWaitingLabel", @"")];
     }
 }
+
+
+-(void)startGame{
+    self.gameLogic = [[GameLogic alloc] init];
+    [self.gameLogic startGame];
+}
+
 @end

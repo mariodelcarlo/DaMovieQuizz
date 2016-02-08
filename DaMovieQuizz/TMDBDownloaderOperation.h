@@ -17,4 +17,6 @@
 @interface TMDBDownloaderOperation : NSOperation
 @property(nonatomic, retain) NSManagedObjectContext * threadContext;
 @property(nonatomic, assign) id<TMDBDownloaderDelegate> delegate;
+@property(nonatomic,assign) BOOL currentDownloadFailed;
+@property(nonatomic,assign) NSInteger numberOfDownloadedPages;
 @end
