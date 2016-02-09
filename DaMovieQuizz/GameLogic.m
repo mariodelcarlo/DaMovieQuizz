@@ -43,11 +43,16 @@
 //Create a game step: choose an Actor, a film and save the right answer
 //returns the GameStep created
 -(GameStep*)createGameStep{
+    
     Actor * randomActor = [[DatabaseHelper sharedInstance] getRandomActor];
-    NSLog(@"randomActor=%@",randomActor.name);
+    Movie * randomMovie = [[DatabaseHelper sharedInstance] getRandomMovieForActor:randomActor];
+    Movie * randomMovieWithoutActor = [[DatabaseHelper sharedInstance] getRandomMovieWithoutActor:randomActor];
+    
+    NSLog(@"randomActor=%@ randomMovie=%@ randomMovieWithoutActor=%@" ,randomActor.name,randomMovie.title,randomMovieWithoutActor.title);
     
     GameStep * newGameStep = [[GameStep alloc] init];
     newGameStep.actorName = randomActor.name;
+    newGameStep.movieTitle = randomMovie.title;
     
     return newGameStep;
 }

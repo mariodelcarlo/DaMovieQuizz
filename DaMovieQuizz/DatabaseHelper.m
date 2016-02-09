@@ -97,4 +97,30 @@
     return (Actor*)randomObject;
 }
 
+-(Movie*)getRandomMovieForActor:(Actor *)actor{
+    NSArray * movies = [actor.movies allObjects];
+    NSUInteger offset = [self randomNumberBetween:0 maxNumber:movies.count-1];
+    Movie *randomMovie = movies[offset];
+    return randomMovie;
+}
+
+-(Movie*)getRandomMovieWithoutActor:(Actor *)actor{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSFetchRequest *myRequest = [[NSFetchRequest alloc] init];
+    [myRequest setEntity: [NSEntityDescription entityForName:@"Movie" inManagedObjectContext:context]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NONE actors.name CONTAINS[cd] %@",actor.name];
+    [myRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *objects = [context executeFetchRequest:myRequest error:&error];
+    if(error == nil){
+        NSUInteger offset = [self randomNumberBetween:0 maxNumber:objects.count-1];
+        Movie *randomMovie = objects[offset];
+        return randomMovie;
+    }
+    return nil;
+}
+
 @end

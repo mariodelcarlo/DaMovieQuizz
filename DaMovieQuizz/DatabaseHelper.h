@@ -15,4 +15,6 @@
 - (NSArray *)getActors;
 - (NSArray *)getMovies;
 -(Actor*)getRandomActor;
+-(Movie*)getRandomMovieForActor:(Actor *)actor;
+-(Movie*)getRandomMovieWithoutActor:(Actor *)actor;
 @end
