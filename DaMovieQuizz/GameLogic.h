@@ -12,7 +12,7 @@
 
 @protocol GameLogicDelegate <NSObject>
 -(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*)theMovie moviePosterURL:(NSURL*)theUrl stepNumber:(int)theStepNumber state:(GameStepState)theGameState animated:(BOOL)animated;
--(void)gameEndedWithScore:(NSInteger)theScore lastState:(GameStepState)theGameState;
+-(void)gameEndedWithScore:(NSInteger)theScore timeElapsedInSeconds:(int)seconds;
 -(void)updateGameTimeSpentWithSeconds:(int)seconds;
 @end
 

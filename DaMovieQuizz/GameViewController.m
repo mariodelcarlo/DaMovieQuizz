@@ -227,7 +227,8 @@
     }
 }
 
--(void)gameEndedWithScore:(NSInteger)theScore lastState:(GameStepState)theGameState{
+-(void)gameEndedWithScore:(NSInteger)theScore timeElapsedInSeconds:(int)seconds{
+    NSLog(@"gameEndedWithScore %d timeElapsedInSeconds=%d",theScore,seconds);
     //Change background color
     [self updateQuestionBackgroundForState:GameStepFailed];
 }

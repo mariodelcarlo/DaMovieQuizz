@@ -144,8 +144,8 @@
         
         NSLog(@"LOOSE THE GAME");
         //The game is finished
-        if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameEndedWithScore: lastState:)]){
-            [self.gameDelegate gameEndedWithScore:self.currentGame.score lastState:theState];
+        if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameEndedWithScore:timeElapsedInSeconds:)]){
+            [self.gameDelegate gameEndedWithScore:self.currentGame.score timeElapsedInSeconds:self.gameElapsedTime];
         }
     }
     else{
@@ -169,8 +169,8 @@
         }
         else{
             //The game is finished
-            if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameEndedWithScore: lastState:)]){
-                [self.gameDelegate gameEndedWithScore:self.currentGame.score lastState:theState];
+            if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameEndedWithScore:timeElapsedInSeconds:)]){
+                [self.gameDelegate gameEndedWithScore:self.currentGame.score timeElapsedInSeconds:self.gameElapsedTime];
             }
         }
     }
