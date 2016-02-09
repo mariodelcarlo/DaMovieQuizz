@@ -16,6 +16,7 @@
 		BC2050E51C67B50300107C73 /* DaMovieQuizzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050E41C67B50300107C73 /* DaMovieQuizzTests.m */; };
 		BC2050F01C67B50300107C73 /* DaMovieQuizzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */; };
 		BC434B6C1C6A8A0900071CE8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BC434B6B1C6A8A0900071CE8 /* Constants.m */; };
+		BC434B6F1C6A922F00071CE8 /* GameSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC434B6E1C6A922F00071CE8 /* GameSummaryViewController.m */; };
 		BC567B5B2506CAD9A71F631B /* libPods-DaMovieQuizz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD94070270C8DED656A42CA /* libPods-DaMovieQuizz.a */; };
 		BC6611741C67BC5200281EC7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6611731C67BC5200281EC7 /* HomeViewController.m */; };
 		BC6611911C67CA9400281EC7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC66118E1C67CA9400281EC7 /* Localizable.strings */; };
@@ -68,6 +69,8 @@
 		BC2050F11C67B50300107C73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC434B6A1C6A8A0900071CE8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BC434B6B1C6A8A0900071CE8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		BC434B6D1C6A922F00071CE8 /* GameSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSummaryViewController.h; sourceTree = "<group>"; };
+		BC434B6E1C6A922F00071CE8 /* GameSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSummaryViewController.m; sourceTree = "<group>"; };
 		BC6611721C67BC5200281EC7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		BC6611731C67BC5200281EC7 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		BC66118F1C67CA9400281EC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				BC6611731C67BC5200281EC7 /* HomeViewController.m */,
 				BC725D361C68F57B002A6DD5 /* GameViewController.h */,
 				BC725D371C68F57B002A6DD5 /* GameViewController.m */,
+				BC434B6D1C6A922F00071CE8 /* GameSummaryViewController.h */,
+				BC434B6E1C6A922F00071CE8 /* GameSummaryViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				BC725D341C68E845002A6DD5 /* Actor+CoreDataProperties.m in Sources */,
 				BC6611741C67BC5200281EC7 /* HomeViewController.m in Sources */,
 				BCE78D1B1C691457001C98C8 /* GameStep.m in Sources */,
+				BC434B6F1C6A922F00071CE8 /* GameSummaryViewController.m in Sources */,
 				BC725D3C1C68FC40002A6DD5 /* DatabaseHelper.m in Sources */,
 				BC2050C91C67B50300107C73 /* main.m in Sources */,
 			);

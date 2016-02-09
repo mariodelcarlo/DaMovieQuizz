@@ -202,5 +202,25 @@
             </objects>
             <point key="canvasLocation" x="968" y="1161"/>
         </scene>
+        <!--Game Summary View Controller-->
+        <scene sceneID="Xmm-ca-zhB">
+            <objects>
+                <viewController id="tho-90-XIN" customClass="GameSummaryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jfa-QO-GP5"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vvy-DF-i4U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OOJ-uy-hA3">
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="1136"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="640" height="1136"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eWh-NG-gfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852" y="1175"/>
+        </scene>
     </scenes>
 </document>
