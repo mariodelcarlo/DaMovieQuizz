@@ -124,12 +124,12 @@
 
 //Method to show the next step if exists or ends game
 -(void)showNextStepWithState:(GameStepState)theState{
-    
-    //Stop the timer
-    [self endGame];
-    
+
     //TODO THE GAME MUST BE ENDLESS
     if(theState == GameStepFailed) {
+        //Stop the timer
+        [self endGame];
+        
         NSLog(@"LOOSE THE GAME");
         //The game is finished
         if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameEndedWithScore: lastState:)]){

@@ -99,12 +99,26 @@
         [self.waitingActivity stopAnimating];
         self.waitingActivity.alpha = 0;
         self.waitingLabel.alpha = 0;
+        self.yesButton.alpha = 1;
+        self.yesButton.enabled = YES;
+        [self.yesButton setTitle:NSLocalizedString(@"YES",@"") forState:UIControlStateNormal];
+        self.noButton.alpha = 1;
+        self.noButton.enabled = YES;
+        [self.noButton setTitle:NSLocalizedString(@"NO",@"") forState:UIControlStateNormal];
+        self.questionLabel.alpha = 1;
+        self.timeLabel.alpha = 1;
     }
     else{
         [self.waitingActivity startAnimating];
         self.waitingActivity.alpha = 1;
         self.waitingLabel.alpha = 1;
         [self.waitingLabel setText:NSLocalizedString(@"gameViewControllerWaitingLabel", @"")];
+        self.yesButton.alpha = 0;
+        self.yesButton.enabled = NO;
+        self.noButton.alpha = 0;
+        self.noButton.enabled = NO;
+        self.questionLabel.alpha = 0;
+        self.timeLabel.alpha = 0;
     }
 }
 
@@ -123,7 +137,7 @@
 }
 
 - (NSString*)getQuestionForActor:(NSString*)theActor movie:(NSString*)theMovie{
-    return [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerQuestion", @""), theActor, theMovie];
+    return [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerQuestion", @""), theActor];
 }
 
 //Set the question background color depending on the game step sate in params

@@ -6,10 +6,14 @@
   Copyright © 2016 Del Carlo Marie-Odile. All rights reserved.
 */
 
+//Common
+"YES" = "YES";
+"NO" = "NO";
+
 //HomeViewController
 "homeViewContollerTitleLabel" = "Da Movie Quizz";
 "homeViewContollerPlayButton" = "Play";
 
 //GameViewController
 "gameViewControllerWaitingLabel" = "Game is loading";
-"gameViewControllerQuestion" = "Did %@ played in %@ ?";
+"gameViewControllerQuestion" = "Did %@ played in ?";
