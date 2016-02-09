@@ -55,15 +55,19 @@
                             NSError *movieError;
                             NSArray *objects = [self.threadContext executeFetchRequest:requestMovie error:&movieError];
                             if([objects count] == 0){
-                                Movie * newMovie = [NSEntityDescription insertNewObjectForEntityForName:@"Movie" inManagedObjectContext:self.threadContext];
-                                newMovie.tmdbId = [knownFor[j][@"id"] intValue];
-                                newMovie.title = knownFor[j][@"title"];
-                                newMovie.mediaType = knownFor[j][@"media_type"];
-                                newMovie.posterPath = knownFor[j][@"poster_path"];
-                                [newActor addMoviesObject:newMovie];
+                                //Check if it's a movie and if title is not nil
+                                if(knownFor[j][@"title"]!=nil && [knownFor[j][@"media_type"] isEqualToString:@"movie"]){
+                                    Movie * newMovie = [NSEntityDescription insertNewObjectForEntityForName:@"Movie" inManagedObjectContext:self.threadContext];
+                                    newMovie.tmdbId = [knownFor[j][@"id"] intValue];
+                                    newMovie.title = knownFor[j][@"title"];
+                                    newMovie.mediaType = knownFor[j][@"media_type"];
+                                    newMovie.posterPath = knownFor[j][@"poster_path"];
+                                    [newActor addMoviesObject:newMovie];
+                                }
                             }
                             else if ([objects count] == 1){
                                 Movie * newMovie = objects[0];
+                                NSLog(@"ici newMovie=%@",newMovie.title);
                                 [newActor addMoviesObject:newMovie];
                             }
                             else{
