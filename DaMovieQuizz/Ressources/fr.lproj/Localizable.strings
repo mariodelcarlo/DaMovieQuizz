@@ -17,5 +17,5 @@
 
 //GameViewController
 "gameViewControllerWaitingLabel" = "Chargement du jeu";
-"gameViewControllerQuestion" = "Est-ce que %@ a joué dans ?";
-"gameViewControllerAnswers" = "Réponse%@";
+"gameViewControllerQuestion" = "Est-ce que %@ a joué dans ce film ?";
+"gameViewControllerAnswers" = "réponse%@";
