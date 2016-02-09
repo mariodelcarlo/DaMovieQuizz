@@ -13,3 +13,4 @@
 
 //GameViewController
 "gameViewControllerWaitingLabel" = "Chargement du jeu";
+"gameViewControllerQuestion" = "Est-ce que %@ a joué dans %@ ?";

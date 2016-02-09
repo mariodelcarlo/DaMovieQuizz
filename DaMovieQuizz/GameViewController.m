@@ -13,10 +13,15 @@
 #import "DatabaseHelper.h"
 #import "GameLogic.h"
 
-@interface GameViewController () <TMDBDownloaderDelegate>
+@interface GameViewController () <TMDBDownloaderDelegate, GameLogicDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *waitingLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *waitingActivity;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
+@property (weak, nonatomic) IBOutlet UIButton *yesButton;
+@property (weak, nonatomic) IBOutlet UIButton *noButton;
 
 //Game logic
 @property (nonatomic, retain)GameLogic *gameLogic;
@@ -106,7 +111,90 @@
 
 -(void)startGame{
     self.gameLogic = [[GameLogic alloc] init];
+    self.gameLogic.gameDelegate = self;
     [self.gameLogic startGame];
+}
+
+- (NSString*)getTimeStr:(int)secondsElapsed {
+    //TODO Check if hour
+    int seconds = secondsElapsed % 60;
+    int minutes = secondsElapsed / 60;
+    return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
+}
+
+- (NSString*)getQuestionForActor:(NSString*)theActor movie:(NSString*)theMovie{
+    return [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerQuestion", @""), theActor, theMovie];
+}
+
+//Set the question background color depending on the game step sate in params
+-(void)updateQuestionBackgroundForState:(GameStepState)theState{
+    if(theState == GameStepFailed){
+        self.questionLabel.backgroundColor = [UIColor redColor];
+    }
+    else if(theState == GameStepWon){
+        self.questionLabel.backgroundColor = [UIColor greenColor];
+    }
+    else{
+        self.questionLabel.backgroundColor = [UIColor clearColor];
+    }
+}
+
+
+
+
+#pragma mark GameLogicDelegate
+-(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*) theMovie state:(GameStepState)theGameState animated:(BOOL)animated{
+   
+    NSLog(@"displayGameStepWithActor %@",theActor);
+    NSString * question = [self getQuestionForActor:theActor movie:theMovie];
+    
+    [self updateQuestionBackgroundForState:theGameState];
+    
+    if(animated){
+        [self.questionLabel setAlpha:1.0f];
+        
+        //fade out
+        [UIView animateWithDuration:1.0f animations:^{
+            [self.yesButton setEnabled:NO];
+            [self.noButton setEnabled:NO];
+            [self.questionLabel setAlpha:0.0f];
+            
+        } completion:^(BOOL finished) {
+            //Disable keyboard
+            [self updateQuestionBackgroundForState:GameStepUnknown];
+            [self.questionLabel setText:question];
+            //fade in
+            [UIView animateWithDuration:1.0f animations:^{
+                [self.questionLabel setAlpha:1.0f];
+                
+            } completion:^(BOOL finished){
+                [self.yesButton setEnabled:YES];
+                [self.noButton setEnabled:YES];
+                [self.gameLogic newStepIsDisplayed];
+            }];
+        }];
+    }
+    else{
+        [self.questionLabel setText:question];
+    }
+}
+
+-(void)gameEndedWithScore:(NSInteger)theScore lastState:(GameStepState)theGameState{
+    //Change background color
+    [self updateQuestionBackgroundForState:GameStepFailed];
+}
+
+-(void)updateGameTimeSpentWithSeconds:(int)seconds{
+    [self.timeLabel setText:[self getTimeStr:seconds]];
+}
+
+#pragma mark actions
+- (IBAction)yesTouchedUpInside:(id)sender {
+    [self.gameLogic validateAnswer:YES];
+}
+
+- (IBAction)noTouchedUpInside:(id)sender {
+    [self.gameLogic validateAnswer:NO];
 }
 
 @end

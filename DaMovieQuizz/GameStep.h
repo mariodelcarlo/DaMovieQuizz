@@ -8,13 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+//Enum for the state of the game
+typedef NS_ENUM(NSUInteger, GameStepState) {
+    GameStepWon = 0,
+    GameStepFailed = 1,
+    GameStepUnknown = 2
+};
+
 @interface GameStep : NSObject
 
 //Actor choosen
-@property(nonatomic, assign)NSString * actorName;
+@property(nonatomic, copy)NSString * actorName;
 
 //Movie choosen
-@property(nonatomic, assign)NSString * movieTitle;
+@property(nonatomic, copy)NSString * movieTitle;
 
 //Right answer
 @property(nonatomic, assign) BOOL rightAnswer;

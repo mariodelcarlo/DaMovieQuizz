@@ -18,6 +18,7 @@
     self = [super init];
     if (self) {
         self.currentGameStep = 0;
+        self.gameElapsedTime = 0;
     }
     return self;
 }
@@ -26,7 +27,6 @@
 
 //Create a game with 10 steps already loaded
 - (void)createGame{
-    NSLog(@"CREATE GAME");
     self.currentGame = [[Game alloc] init];
    
     //Prepare 10 questions
@@ -77,8 +77,6 @@
 
 
 -(void)startGame{
-    NSLog(@"START GAME");
-    
     //Create a game
     [self createGame];
     
@@ -89,11 +87,20 @@
     }
     self.currentGameTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
     [self.currentGameTimer fire];
+    
+    if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:state:animated:)]){
+        //Display first step of the game
+        GameStep * step1 = self.currentGame.steps[0];
+        [self.gameDelegate displayGameStepWithActor:step1.actorName movie:step1.movieTitle state:GameStepUnknown animated:NO];
+    }
 }
 
 
 -(void)timerTick:(NSTimer *)timer {
-    //NSLog(@"timerTick");
+    self.gameElapsedTime = self.gameElapsedTime + 1;
+    if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(updateGameTimeSpentWithSeconds:)]){
+        [self.gameDelegate updateGameTimeSpentWithSeconds:self.gameElapsedTime];
+    }
 }
 
 -(void)endGame{
@@ -115,5 +122,67 @@
 }
 
 
+//Method to show the next step if exists or ends game
+-(void)showNextStepWithState:(GameStepState)theState{
+    
+    //Stop the timer
+    [self endGame];
+    
+    //TODO THE GAME MUST BE ENDLESS
+    if(theState == GameStepFailed) {
+        NSLog(@"LOOSE THE GAME");
+        //The game is finished
+        if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameEndedWithScore: lastState:)]){
+            [self.gameDelegate gameEndedWithScore:self.currentGame.score lastState:theState];
+        }
+    }
+    else{
+        //Go to the next step if there is one left
+        if(self.currentGameStep < self.currentGame.steps.count - 1){
+            //Change the step
+            self.currentGameStep = self.currentGameStep + 1;
+            
+            if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:state:animated:)]){
+                
+                //Display next step of the game
+                GameStep * stepNew = self.currentGame.steps[self.currentGameStep];
+                [self.gameDelegate displayGameStepWithActor:stepNew.actorName movie:stepNew.movieTitle state:theState animated:YES];
+            }
+        }
+        else{
+            //The game is finished
+            if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameEndedWithScore: lastState:)]){
+                [self.gameDelegate gameEndedWithScore:self.currentGame.score lastState:theState];
+            }
+        }
+    }
+    
+}
+
+//Checks if an answer is right or not, and call the right method depending if the game step
+//is won or not
+-(void)validateAnswer:(BOOL)theAnswer{
+    GameStep * step1 = self.currentGame.steps[self.currentGameStep];
+    if([step1 rightAnswer] == theAnswer){
+        //WON THE STEP
+        self.currentGame.score = self.currentGame.score + 1;
+        [self showNextStepWithState:GameStepWon];
+    }
+    else{
+        //LOOSE THE GAME
+        [self showNextStepWithState:GameStepFailed];
+    }
+}
+
+//Called when a new step has been displayed and the animation is finished
+-(void)newStepIsDisplayed{
+    /*//Start the timer
+     if(self.currentStepTimer !=nil){
+     [self.currentStepTimer invalidate];
+     self.currentStepTimer = nil;
+     }
+     self.currentStepTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(stepTimerTick:) userInfo:nil repeats:YES];
+     [self.currentStepTimer fire];*/
+}
 
 @end

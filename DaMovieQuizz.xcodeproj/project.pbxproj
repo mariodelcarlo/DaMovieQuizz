@@ -151,8 +151,8 @@
 		BC2050C61C67B50300107C73 /* DaMovieQuizz */ = {
 			isa = PBXGroup;
 			children = (
-				BCE78D151C691299001C98C8 /* Game */,
 				BC66118D1C67CA9400281EC7 /* Ressources */,
+				BCE78D151C691299001C98C8 /* Game */,
 				BCE78D141C69127A001C98C8 /* Utils */,
 				BC725D1D1C68E78B002A6DD5 /* Database */,
 				BC6611751C67BC5A00281EC7 /* ViewControllers */,
