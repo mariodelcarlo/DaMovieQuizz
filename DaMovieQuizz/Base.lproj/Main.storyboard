@@ -136,11 +136,17 @@
                                     <action selector="noTouchedUpInside:" destination="g7n-LT-dJg" eventType="touchUpInside" id="fAu-NY-Bps"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z3Q-l7-Svj">
-                                <rect key="frame" x="0.0" y="293" width="640" height="341"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z3Q-l7-Svj">
+                                <rect key="frame" x="0.0" y="293" width="640" height="180"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="qja-bO-DFE"/>
                                     <constraint firstAttribute="width" secondItem="z3Q-l7-Svj" secondAttribute="height" multiplier="15:8" id="rVG-Gc-31x"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="rVG-Gc-31x"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baO-CM-8ew">
                                 <rect key="frame" x="293" y="20" width="55" height="26"/>
@@ -170,12 +176,13 @@
                             <constraint firstItem="0xy-bp-32z" firstAttribute="top" secondItem="j0R-Wg-bZf" secondAttribute="bottom" constant="20" id="XPK-cv-kPR"/>
                             <constraint firstItem="zpd-gl-0Bz" firstAttribute="centerX" secondItem="FSa-WR-Kh5" secondAttribute="centerX" id="XqX-dJ-Ec9"/>
                             <constraint firstItem="WtJ-GR-HLx" firstAttribute="top" secondItem="CcA-BA-gNI" secondAttribute="bottom" constant="20" id="e1O-Jy-vIc"/>
+                            <constraint firstItem="z3Q-l7-Svj" firstAttribute="leading" secondItem="FSa-WR-Kh5" secondAttribute="leading" id="g7T-LB-b2D"/>
                             <constraint firstItem="PyX-0a-PjK" firstAttribute="centerX" secondItem="FSa-WR-Kh5" secondAttribute="centerX" id="pl8-L8-Fyi"/>
                             <constraint firstItem="PyX-0a-PjK" firstAttribute="centerY" secondItem="FSa-WR-Kh5" secondAttribute="centerY" multiplier="0.45" id="r4O-Ri-ctq"/>
                             <constraint firstItem="0xy-bp-32z" firstAttribute="top" secondItem="JM5-R9-thJ" secondAttribute="bottom" constant="20" id="trf-5K-Nw8"/>
-                            <constraint firstItem="z3Q-l7-Svj" firstAttribute="width" secondItem="FSa-WR-Kh5" secondAttribute="width" id="xCe-cO-fpT"/>
                             <constraint firstItem="FSj-gr-NmF" firstAttribute="centerX" secondItem="FSa-WR-Kh5" secondAttribute="centerX" id="zHR-Co-Hhr"/>
                             <constraint firstItem="WtJ-GR-HLx" firstAttribute="trailing" secondItem="FSa-WR-Kh5" secondAttribute="trailingMargin" constant="10" id="zOI-uH-2KG"/>
+                            <constraint firstAttribute="trailing" secondItem="z3Q-l7-Svj" secondAttribute="trailing" id="zOq-NX-4L4"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

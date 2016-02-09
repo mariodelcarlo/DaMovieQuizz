@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "DatabaseHelper.h"
 #import "GameLogic.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface GameViewController () <TMDBDownloaderDelegate, GameLogicDelegate>
 
@@ -72,7 +73,12 @@
 - (void)didFailedTMDBDownloadWithError:(NSError *)error{
     //TODO
 }
-    
+
+- (void)didFailedTMDBLoadConfiguration{
+    UIAlertView * errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"gameViewControllerConfigurationError", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+    [errorAlertView show];
+}
+
 - (void)didFinishDownloading{
     NSLog(@"NB ACTORS=%d",[[[DatabaseHelper sharedInstance] getActors] count]);
     NSLog(@"NB FILMS %d",[[[DatabaseHelper sharedInstance] getMovies] count]);
@@ -94,7 +100,7 @@
     }
 }
 
-#pragma mark private methods
+#pragma mark private methods - UI
 //Hide or display the UI Elements about waiting the download of elements in database
 - (void)hideWaitingUIElements:(BOOL)mustHide{
     if(mustHide){
@@ -126,13 +132,21 @@
     }
 }
 
-
--(void)startGame{
-    self.gameLogic = [[GameLogic alloc] init];
-    self.gameLogic.gameDelegate = self;
-    [self.gameLogic startGame];
+//Set the question background color depending on the game step sate in params
+-(void)updateQuestionBackgroundForState:(GameStepState)theState{
+    if(theState == GameStepFailed){
+        self.questionLabel.backgroundColor = [UIColor redColor];
+    }
+    else if(theState == GameStepWon){
+        self.questionLabel.backgroundColor = [UIColor greenColor];
+    }
+    else{
+        self.questionLabel.backgroundColor = [UIColor clearColor];
+    }
 }
 
+
+#pragma mark private methods - utils
 - (NSString*)getTimeStr:(int)secondsElapsed {
     //TODO Check if hour
     int seconds = secondsElapsed % 60;
@@ -156,26 +170,19 @@
     return [NSString stringWithFormat:@"%d %@",theNumber,answersString];
 }
 
-//Set the question background color depending on the game step sate in params
--(void)updateQuestionBackgroundForState:(GameStepState)theState{
-    if(theState == GameStepFailed){
-        self.questionLabel.backgroundColor = [UIColor redColor];
-    }
-    else if(theState == GameStepWon){
-        self.questionLabel.backgroundColor = [UIColor greenColor];
-    }
-    else{
-        self.questionLabel.backgroundColor = [UIColor clearColor];
-    }
+
+#pragma mark private methods - others
+-(void)startGame{
+    self.gameLogic = [[GameLogic alloc] init];
+    self.gameLogic.gameDelegate = self;
+    [self.gameLogic startGame];
 }
 
 
 
-
 #pragma mark GameLogicDelegate
--(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*) theMovie stepNumber:(int)theStepNumber state:(GameStepState)theGameState animated:(BOOL)animated{
+-(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*)theMovie moviePosterURL:(NSURL*)theUrl stepNumber:(int)theStepNumber state:(GameStepState)theGameState animated:(BOOL)animated{
    
-    NSLog(@"displayGameStepWithActor %@",theActor);
     NSString * question = [self getQuestionForActor:theActor movie:theMovie];
     NSString * numberOfAnswers = [self getNumberOfAnswersForNumber:theStepNumber];
     
@@ -188,6 +195,7 @@
         [UIView animateWithDuration:1.0f animations:^{
             [self.yesButton setEnabled:NO];
             [self.noButton setEnabled:NO];
+            [self.posterImageView setAlpha:0.0f];
             [self.questionLabel setAlpha:0.0f];
             [self.numberOfAnswersLabel setAlpha:0.0f];
             
@@ -196,10 +204,13 @@
             [self updateQuestionBackgroundForState:GameStepUnknown];
             [self.questionLabel setText:question];
             [self.numberOfAnswersLabel setText:numberOfAnswers];
+            [self.posterImageView setImage:nil]; //we don't want the previous image to be displayed
+            [self.posterImageView setImageWithURL:theUrl placeholderImage:nil];
             //fade in
             [UIView animateWithDuration:1.0f animations:^{
                 [self.questionLabel setAlpha:1.0f];
                 [self.numberOfAnswersLabel setAlpha:1.0f];
+                [self.posterImageView setAlpha:1.0f];
                 
             } completion:^(BOOL finished){
                 [self.yesButton setEnabled:YES];
@@ -209,6 +220,8 @@
         }];
     }
     else{
+        [self.posterImageView setImage:nil];
+        [self.posterImageView setImageWithURL:theUrl placeholderImage:nil];
         [self.numberOfAnswersLabel setText:numberOfAnswers];
         [self.questionLabel setText:question];
     }

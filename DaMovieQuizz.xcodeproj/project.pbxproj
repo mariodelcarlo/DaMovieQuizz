@@ -15,6 +15,7 @@
 		BC2050DA1C67B50300107C73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2050D81C67B50300107C73 /* LaunchScreen.storyboard */; };
 		BC2050E51C67B50300107C73 /* DaMovieQuizzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050E41C67B50300107C73 /* DaMovieQuizzTests.m */; };
 		BC2050F01C67B50300107C73 /* DaMovieQuizzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */; };
+		BC434B6C1C6A8A0900071CE8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BC434B6B1C6A8A0900071CE8 /* Constants.m */; };
 		BC567B5B2506CAD9A71F631B /* libPods-DaMovieQuizz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD94070270C8DED656A42CA /* libPods-DaMovieQuizz.a */; };
 		BC6611741C67BC5200281EC7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6611731C67BC5200281EC7 /* HomeViewController.m */; };
 		BC6611911C67CA9400281EC7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC66118E1C67CA9400281EC7 /* Localizable.strings */; };
@@ -65,6 +66,8 @@
 		BC2050EB1C67B50300107C73 /* DaMovieQuizzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaMovieQuizzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaMovieQuizzUITests.m; sourceTree = "<group>"; };
 		BC2050F11C67B50300107C73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC434B6A1C6A8A0900071CE8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		BC434B6B1C6A8A0900071CE8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		BC6611721C67BC5200281EC7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		BC6611731C67BC5200281EC7 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		BC66118F1C67CA9400281EC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 		BCE78D141C69127A001C98C8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BC434B6A1C6A8A0900071CE8 /* Constants.h */,
+				BC434B6B1C6A8A0900071CE8 /* Constants.m */,
 				BC725D1A1C68E1BF002A6DD5 /* TMDBDownloaderOperation.h */,
 				BC725D1B1C68E1BF002A6DD5 /* TMDBDownloaderOperation.m */,
 			);
@@ -450,6 +455,7 @@
 				BC2050D51C67B50300107C73 /* DaMovieQuizz.xcdatamodeld in Sources */,
 				BCE78D181C6912E9001C98C8 /* Game.m in Sources */,
 				BC725D331C68E845002A6DD5 /* Movie.m in Sources */,
+				BC434B6C1C6A8A0900071CE8 /* Constants.m in Sources */,
 				BC725D321C68E845002A6DD5 /* Movie+CoreDataProperties.m in Sources */,
 				BCE78D1E1C69159F001C98C8 /* GameLogic.m in Sources */,
 				BC725D1C1C68E1BF002A6DD5 /* TMDBDownloaderOperation.m in Sources */,

@@ -11,6 +11,7 @@
 
 @protocol TMDBDownloaderDelegate <NSObject>
 - (void)didFailedTMDBDownloadWithError:(NSError *)error;
+- (void)didFailedTMDBLoadConfiguration;
 - (void)didFinishDownloading;
 @end
 

@@ -11,6 +11,7 @@
 #import "Appdelegate.h"
 #import "Actor.h"
 #import "Movie.h"
+#import "Constants.h"
 
 #define NB_PAGES_TO_DOWNLOAD 2
 
@@ -28,6 +29,9 @@
     self.threadContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     self.threadContext.persistentStoreCoordinator = appDelegate.persistentStoreCoordinator;
+    
+    //Load Configuration
+    [self loadConfigurationForImages];
     
     //Get many pages
     for(int page=1; page<=NB_PAGES_TO_DOWNLOAD;page++)
@@ -124,6 +128,21 @@
             }
         }
     }
+}
+
+- (void)loadConfigurationForImages{
+    [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
+        if (!error){
+            NSString * imagesBaseUrlString = response[@"images"][@"base_url"];
+            [[NSUserDefaults standardUserDefaults] setValue:imagesBaseUrlString forKey:USER_DEFAULTS_IMAGE_URL_KEY];
+            NSLog(@"imagesBaseUrlString DS TMDBDOWNLOADOP=%@",imagesBaseUrlString);
+        }
+        else{
+            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailedTMDBLoadConfiguration)]){
+                [self.delegate didFailedTMDBLoadConfiguration];
+            }
+        }
+    }];
 }
 
 @end

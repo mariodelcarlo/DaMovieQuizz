@@ -9,6 +9,9 @@
 //Common
 "YES" = "YES";
 "NO" = "NO";
+"Error" = "Error";
+"Ok" = "Ok";
+
 
 //HomeViewController
 "homeViewContollerTitleLabel" = "Da Movie Quizz";
@@ -18,3 +21,4 @@
 "gameViewControllerWaitingLabel" = "Game is loading";
 "gameViewControllerQuestion" = "Did %@ played in this movie ?";
 "gameViewControllerAnswers" = "answer%@";
+"gameViewControllerConfigurationError" = "An error occured while getting the image base url.";
