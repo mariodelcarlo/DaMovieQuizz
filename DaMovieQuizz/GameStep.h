@@ -17,7 +17,7 @@
 @property(nonatomic, assign)NSString * movieTitle;
 
 //Right answer
-@property(nonatomic, assign) BOOL * rightAnswer;
+@property(nonatomic, assign) BOOL rightAnswer;
 
 
 @end

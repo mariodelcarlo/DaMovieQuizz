@@ -44,15 +44,33 @@
 //returns the GameStep created
 -(GameStep*)createGameStep{
     
+    //We find a random famous actor
     Actor * randomActor = [[DatabaseHelper sharedInstance] getRandomActor];
+    //We find a random movie in which the famous actor has played
     Movie * randomMovie = [[DatabaseHelper sharedInstance] getRandomMovieForActor:randomActor];
+    //We find a random movie in which the famous actor has not played
     Movie * randomMovieWithoutActor = [[DatabaseHelper sharedInstance] getRandomMovieWithoutActor:randomActor];
     
-    NSLog(@"randomActor=%@ randomMovie=%@ randomMovieWithoutActor=%@" ,randomActor.name,randomMovie.title,randomMovieWithoutActor.title);
+    NSString * movieTitleChoosen = nil;
+    BOOL rightAnswer = NO;
+    //We choose randomly between this these 2 films->50% of chance the actor has played in the film and 50% he has not played
+    int randomNumber = (int)[[DatabaseHelper sharedInstance] randomNumberBetween:0 maxNumber:1];
+    
+    if(randomNumber == 0){
+        movieTitleChoosen = randomMovie.title;
+        rightAnswer = YES;
+    }
+    else{
+        movieTitleChoosen = randomMovieWithoutActor.title;
+        rightAnswer = NO;
+    }
+    
+    NSLog(@"Question=Est-ce que %@ a joué dans %@? -> %d",randomActor.name,movieTitleChoosen,rightAnswer);
     
     GameStep * newGameStep = [[GameStep alloc] init];
     newGameStep.actorName = randomActor.name;
-    newGameStep.movieTitle = randomMovie.title;
+    newGameStep.movieTitle = movieTitleChoosen;
+    newGameStep.rightAnswer = rightAnswer;
     
     return newGameStep;
 }
@@ -95,5 +113,7 @@
         self.currentGameTimer = nil;
     }
 }
+
+
 
 @end

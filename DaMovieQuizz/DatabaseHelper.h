@@ -17,4 +17,5 @@
 -(Actor*)getRandomActor;
 -(Movie*)getRandomMovieForActor:(Actor *)actor;
 -(Movie*)getRandomMovieWithoutActor:(Actor *)actor;
+- (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max;
 @end
