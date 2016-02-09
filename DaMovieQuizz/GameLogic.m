@@ -88,10 +88,10 @@
     self.currentGameTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
     [self.currentGameTimer fire];
     
-    if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:state:animated:)]){
+    if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:stepNumber:state:animated:)]){
         //Display first step of the game
         GameStep * step1 = self.currentGame.steps[0];
-        [self.gameDelegate displayGameStepWithActor:step1.actorName movie:step1.movieTitle state:GameStepUnknown animated:NO];
+        [self.gameDelegate displayGameStepWithActor:step1.actorName movie:step1.movieTitle stepNumber:self .currentGameStep state:GameStepUnknown animated:NO];
     }
 }
 
@@ -142,11 +142,11 @@
             //Change the step
             self.currentGameStep = self.currentGameStep + 1;
             
-            if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:state:animated:)]){
+            if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:stepNumber:state:animated:)]){
                 
                 //Display next step of the game
                 GameStep * stepNew = self.currentGame.steps[self.currentGameStep];
-                [self.gameDelegate displayGameStepWithActor:stepNew.actorName movie:stepNew.movieTitle state:theState animated:YES];
+                [self.gameDelegate displayGameStepWithActor:stepNew.actorName movie:stepNew.movieTitle stepNumber:self.currentGameStep state:theState animated:YES];
             }
         }
         else{

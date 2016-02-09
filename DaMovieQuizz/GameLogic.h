@@ -11,7 +11,7 @@
 #import "GameStep.h"
 
 @protocol GameLogicDelegate <NSObject>
--(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*) theMovie state:(GameStepState)theGameState animated:(BOOL)animated;
+-(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*) theMovie stepNumber:(int)theStepNumber state:(GameStepState)theGameState animated:(BOOL)animated;
 -(void)gameEndedWithScore:(NSInteger)theScore lastState:(GameStepState)theGameState;
 -(void)updateGameTimeSpentWithSeconds:(int)seconds;
 @end

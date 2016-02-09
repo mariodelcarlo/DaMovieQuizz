@@ -17,3 +17,4 @@
 //GameViewController
 "gameViewControllerWaitingLabel" = "Game is loading";
 "gameViewControllerQuestion" = "Did %@ played in ?";
+"gameViewControllerAnswers" = "Answer%@";

@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet UIButton *yesButton;
 @property (weak, nonatomic) IBOutlet UIButton *noButton;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfAnswersLabel;
+
 
 //Game logic
 @property (nonatomic, retain)GameLogic *gameLogic;
@@ -107,6 +109,7 @@
         [self.noButton setTitle:NSLocalizedString(@"NO",@"") forState:UIControlStateNormal];
         self.questionLabel.alpha = 1;
         self.timeLabel.alpha = 1;
+        self.numberOfAnswersLabel.alpha = 1;
     }
     else{
         [self.waitingActivity startAnimating];
@@ -119,6 +122,7 @@
         self.noButton.enabled = NO;
         self.questionLabel.alpha = 0;
         self.timeLabel.alpha = 0;
+        self.numberOfAnswersLabel.alpha = 0;
     }
 }
 
@@ -140,6 +144,18 @@
     return [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerQuestion", @""), theActor];
 }
 
+
+- (NSString*)getNumberOfAnswersForNumber:(int)theNumber{
+    NSString * answersString;
+    if(theNumber == 0 || theNumber == 1){
+        answersString = [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerAnswers", @""), @""];
+    }
+    else{
+        answersString = [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerAnswers", @""), @"s"];
+    }
+    return [NSString stringWithFormat:@"%d %@",theNumber,answersString];
+}
+
 //Set the question background color depending on the game step sate in params
 -(void)updateQuestionBackgroundForState:(GameStepState)theState{
     if(theState == GameStepFailed){
@@ -157,10 +173,11 @@
 
 
 #pragma mark GameLogicDelegate
--(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*) theMovie state:(GameStepState)theGameState animated:(BOOL)animated{
+-(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*) theMovie stepNumber:(int)theStepNumber state:(GameStepState)theGameState animated:(BOOL)animated{
    
     NSLog(@"displayGameStepWithActor %@",theActor);
     NSString * question = [self getQuestionForActor:theActor movie:theMovie];
+    NSString * numberOfAnswers = [self getNumberOfAnswersForNumber:theStepNumber];
     
     [self updateQuestionBackgroundForState:theGameState];
     
@@ -172,14 +189,17 @@
             [self.yesButton setEnabled:NO];
             [self.noButton setEnabled:NO];
             [self.questionLabel setAlpha:0.0f];
+            [self.numberOfAnswersLabel setAlpha:0.0f];
             
         } completion:^(BOOL finished) {
             //Disable keyboard
             [self updateQuestionBackgroundForState:GameStepUnknown];
             [self.questionLabel setText:question];
+            [self.numberOfAnswersLabel setText:numberOfAnswers];
             //fade in
             [UIView animateWithDuration:1.0f animations:^{
                 [self.questionLabel setAlpha:1.0f];
+                [self.numberOfAnswersLabel setAlpha:1.0f];
                 
             } completion:^(BOOL finished){
                 [self.yesButton setEnabled:YES];
@@ -189,6 +209,7 @@
         }];
     }
     else{
+        [self.numberOfAnswersLabel setText:numberOfAnswers];
         [self.questionLabel setText:question];
     }
 }
