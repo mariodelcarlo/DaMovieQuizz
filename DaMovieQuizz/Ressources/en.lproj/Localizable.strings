@@ -22,3 +22,13 @@
 "gameViewControllerQuestion" = "Did %@ played in this movie ?";
 "gameViewControllerAnswers" = "answer%@";
 "gameViewControllerConfigurationError" = "An error occured while getting the image base url.";
+
+//GameSummaryViewController
+"gameSummaryTitleLabel" = "You loose !";
+"gameSummaryTimeSpentLabel" = "Time spent: %@";
+"gameSummaryNumberOfAnswers" = "Number of right answers: %d";
+"gameSummaryPlayAgainButton" = "Play again";
+"gameSummaryNameLabel" = "Your name:";
+"gameSummaryHighScoresLabel" = "Highscores";
+"gameSummaryNameAlertTitle" = "Name required";
+"gameSummaryNameAlertMessage" = "Your name is required in order to be displayed on highscores.";

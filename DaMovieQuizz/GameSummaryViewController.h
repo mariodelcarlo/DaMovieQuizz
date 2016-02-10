@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameSummaryViewController : UIViewController
-
+@interface GameSummaryViewController : UIViewController<UITextFieldDelegate>
+@property(nonatomic,assign) NSInteger numberOfAnswers;
+@property(nonatomic,assign) int secondsSpent;
 @end

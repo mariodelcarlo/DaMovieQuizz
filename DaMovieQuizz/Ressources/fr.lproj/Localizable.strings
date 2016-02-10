@@ -22,3 +22,13 @@
 "gameViewControllerQuestion" = "Est-ce que %@ a joué dans ce film ?";
 "gameViewControllerAnswers" = "réponse%@";
 "gameViewControllerConfigurationError" = "Une erreur s'est produite lors de la récupération de l'url de base des images";
+
+//GameSummaryViewController
+"gameSummaryTitleLabel" = "Tu as perdu !";
+"gameSummaryTimeSpentLabel" = "Temps écoulé: %@";
+"gameSummaryNumberOfAnswers" = "Nombre de bonnes réponses: %d";
+"gameSummaryPlayAgainButton" = "Play again";
+"gameSummaryNameLabel" = "Ton nom:";
+"gameSummaryHighScoresLabel" = "Highscores";
+"gameSummaryNameAlertTitle" = "Nom requis";
+"gameSummaryNameAlertMessage" = "Votre nom est requis pour pouvoir être affiché dans les highscores !";

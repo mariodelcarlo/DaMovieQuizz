@@ -13,6 +13,8 @@
 #import "DatabaseHelper.h"
 #import "GameLogic.h"
 #import <UIImageView+AFNetworking.h>
+#import "GameSummaryViewController.h"
+#import "Utils.h"
 
 @interface GameViewController () <TMDBDownloaderDelegate, GameLogicDelegate>
 
@@ -147,13 +149,6 @@
 
 
 #pragma mark private methods - utils
-- (NSString*)getTimeStr:(int)secondsElapsed {
-    //TODO Check if hour
-    int seconds = secondsElapsed % 60;
-    int minutes = secondsElapsed / 60;
-    return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
-}
-
 - (NSString*)getQuestionForActor:(NSString*)theActor movie:(NSString*)theMovie{
     return [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerQuestion", @""), theActor];
 }
@@ -231,10 +226,20 @@
     NSLog(@"gameEndedWithScore %d timeElapsedInSeconds=%d",theScore,seconds);
     //Change background color
     [self updateQuestionBackgroundForState:GameStepFailed];
+    
+    //Disable buttons
+    [self.yesButton setEnabled:NO];
+    [self.noButton setEnabled:NO];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    GameSummaryViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"gameSummaryID"];
+    dest.secondsSpent = seconds;
+    dest.numberOfAnswers = theScore;
+    [self.navigationController pushViewController:dest animated:YES];
 }
 
 -(void)updateGameTimeSpentWithSeconds:(int)seconds{
-    [self.timeLabel setText:[self getTimeStr:seconds]];
+    [self.timeLabel setText:[Utils getTimeStringFromSeconds:seconds]];
 }
 
 #pragma mark actions
@@ -244,6 +249,10 @@
 
 - (IBAction)noTouchedUpInside:(id)sender {
     [self.gameLogic validateAnswer:NO];
+}
+
+-(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+    NSLog(@"prepareForUnwind %@",segue);
 }
 
 @end
