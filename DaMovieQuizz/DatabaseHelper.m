@@ -106,15 +106,16 @@
     return nil;
 }
 
-//Returns an array of HighScores
+//Returns an array of HighScores, sorted by higher score and then lower time
 - (NSArray *)getHighScores{
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Highscore" inManagedObjectContext:context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"HighScore" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc]init];
     [request setEntity:entityDesc];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"" ascending:NO];
-    [request setSortDescriptors:@[sortDescriptor]];
+    NSSortDescriptor *sortDescriptorScore = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
+    NSSortDescriptor *sortDescriptorTime = [[NSSortDescriptor alloc] initWithKey:@"timeInSeconds" ascending:YES];
+    [request setSortDescriptors:@[sortDescriptorScore,sortDescriptorTime]];
     
     NSError *error = nil;
     NSArray *objects = [context executeFetchRequest:request error:&error];
@@ -126,4 +127,6 @@
      }
     return objects;
 }
+
+
 @end
