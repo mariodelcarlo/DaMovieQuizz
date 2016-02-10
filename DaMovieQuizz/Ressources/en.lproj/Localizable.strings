@@ -11,6 +11,7 @@
 "NO" = "NO";
 "Error" = "Error";
 "Ok" = "OK";
+"Cancel" = "Cancel";
 
 
 //HomeViewController
@@ -29,6 +30,5 @@
 "gameSummaryNumberOfAnswers" = "Number of right answers: %d";
 "gameSummaryPlayAgainButton" = "Play again";
 "gameSummaryNameLabel" = "Your name:";
-"gameSummaryHighScoresLabel" = "Highscores";
-"gameSummaryNameAlertTitle" = "Name required";
-"gameSummaryNameAlertMessage" = "Your name is required in order to be displayed on highscores.";
+"gameSummaryNameAlertTitle" = "Congratulations! You're in the highscores !";
+"gameSummaryNameAlertMessage" = "Write your name here:";

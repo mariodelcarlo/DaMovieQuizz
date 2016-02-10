@@ -18,6 +18,8 @@
 		BC3BA0DE1C6B67A30067DE17 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3BA0DD1C6B67A30067DE17 /* Utils.m */; };
 		BC3BA0E31C6B7BBF0067DE17 /* HighScore+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3BA0E01C6B7BBF0067DE17 /* HighScore+CoreDataProperties.m */; };
 		BC3BA0E41C6B7BBF0067DE17 /* HighScore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3BA0E21C6B7BBF0067DE17 /* HighScore.m */; };
+		BC3BA0ED1C6BB4F20067DE17 /* HighScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3BA0EC1C6BB4F20067DE17 /* HighScoresViewController.m */; };
+		BC3BA0F11C6BBE920067DE17 /* HighScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3BA0F01C6BBE920067DE17 /* HighScoreTableViewCell.m */; };
 		BC434B6C1C6A8A0900071CE8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BC434B6B1C6A8A0900071CE8 /* Constants.m */; };
 		BC434B6F1C6A922F00071CE8 /* GameSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC434B6E1C6A922F00071CE8 /* GameSummaryViewController.m */; };
 		BC567B5B2506CAD9A71F631B /* libPods-DaMovieQuizz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD94070270C8DED656A42CA /* libPods-DaMovieQuizz.a */; };
@@ -76,6 +78,10 @@
 		BC3BA0E01C6B7BBF0067DE17 /* HighScore+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HighScore+CoreDataProperties.m"; sourceTree = "<group>"; };
 		BC3BA0E11C6B7BBF0067DE17 /* HighScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScore.h; sourceTree = "<group>"; };
 		BC3BA0E21C6B7BBF0067DE17 /* HighScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScore.m; sourceTree = "<group>"; };
+		BC3BA0EB1C6BB4F20067DE17 /* HighScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoresViewController.h; sourceTree = "<group>"; };
+		BC3BA0EC1C6BB4F20067DE17 /* HighScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoresViewController.m; sourceTree = "<group>"; };
+		BC3BA0EF1C6BBE920067DE17 /* HighScoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoreTableViewCell.h; sourceTree = "<group>"; };
+		BC3BA0F01C6BBE920067DE17 /* HighScoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoreTableViewCell.m; sourceTree = "<group>"; };
 		BC434B6A1C6A8A0900071CE8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BC434B6B1C6A8A0900071CE8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		BC434B6D1C6A922F00071CE8 /* GameSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSummaryViewController.h; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				BC66118D1C67CA9400281EC7 /* Ressources */,
+				BC3BA0EE1C6BBE790067DE17 /* Views */,
 				BCE78D151C691299001C98C8 /* Game */,
 				BCE78D141C69127A001C98C8 /* Utils */,
 				BC725D1D1C68E78B002A6DD5 /* Database */,
@@ -208,15 +215,26 @@
 			path = DaMovieQuizzUITests;
 			sourceTree = "<group>";
 		};
+		BC3BA0EE1C6BBE790067DE17 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC3BA0EF1C6BBE920067DE17 /* HighScoreTableViewCell.h */,
+				BC3BA0F01C6BBE920067DE17 /* HighScoreTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		BC6611751C67BC5A00281EC7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				BC6611721C67BC5200281EC7 /* HomeViewController.h */,
-				BC6611731C67BC5200281EC7 /* HomeViewController.m */,
-				BC725D361C68F57B002A6DD5 /* GameViewController.h */,
-				BC725D371C68F57B002A6DD5 /* GameViewController.m */,
 				BC434B6D1C6A922F00071CE8 /* GameSummaryViewController.h */,
 				BC434B6E1C6A922F00071CE8 /* GameSummaryViewController.m */,
+				BC725D361C68F57B002A6DD5 /* GameViewController.h */,
+				BC725D371C68F57B002A6DD5 /* GameViewController.m */,
+				BC3BA0EB1C6BB4F20067DE17 /* HighScoresViewController.h */,
+				BC3BA0EC1C6BB4F20067DE17 /* HighScoresViewController.m */,
+				BC6611721C67BC5200281EC7 /* HomeViewController.h */,
+				BC6611731C67BC5200281EC7 /* HomeViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -475,8 +493,10 @@
 				BC2050D51C67B50300107C73 /* DaMovieQuizz.xcdatamodeld in Sources */,
 				BCE78D181C6912E9001C98C8 /* Game.m in Sources */,
 				BC725D331C68E845002A6DD5 /* Movie.m in Sources */,
+				BC3BA0F11C6BBE920067DE17 /* HighScoreTableViewCell.m in Sources */,
 				BC434B6C1C6A8A0900071CE8 /* Constants.m in Sources */,
 				BC725D321C68E845002A6DD5 /* Movie+CoreDataProperties.m in Sources */,
+				BC3BA0ED1C6BB4F20067DE17 /* HighScoresViewController.m in Sources */,
 				BCE78D1E1C69159F001C98C8 /* GameLogic.m in Sources */,
 				BC725D1C1C68E1BF002A6DD5 /* TMDBDownloaderOperation.m in Sources */,
 				BC2050CC1C67B50300107C73 /* AppDelegate.m in Sources */,

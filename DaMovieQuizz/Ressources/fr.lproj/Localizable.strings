@@ -11,6 +11,7 @@
 "NO" = "NON";
 "Error" = "Erreur";
 "Ok" = "OK";
+"Cancel" = "Annuler";
 
 //HomeViewController
 "homeViewContollerTitleLabel" = "Da Movie Quizz";
@@ -30,5 +31,5 @@
 "gameSummaryPlayAgainButton" = "Play again";
 "gameSummaryNameLabel" = "Ton nom:";
 "gameSummaryHighScoresLabel" = "Highscores";
-"gameSummaryNameAlertTitle" = "Nom requis";
-"gameSummaryNameAlertMessage" = "Votre nom est requis pour pouvoir être affiché dans les highscores !";
+"gameSummaryNameAlertTitle" = "Bravo, vous êtes dans les high scores !";
+"gameSummaryNameAlertMessage" = "Saisissez votre nom:";
