@@ -16,6 +16,8 @@
 		BC2050E51C67B50300107C73 /* DaMovieQuizzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050E41C67B50300107C73 /* DaMovieQuizzTests.m */; };
 		BC2050F01C67B50300107C73 /* DaMovieQuizzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2050EF1C67B50300107C73 /* DaMovieQuizzUITests.m */; };
 		BC3BA0DE1C6B67A30067DE17 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3BA0DD1C6B67A30067DE17 /* Utils.m */; };
+		BC3BA0E31C6B7BBF0067DE17 /* HighScore+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3BA0E01C6B7BBF0067DE17 /* HighScore+CoreDataProperties.m */; };
+		BC3BA0E41C6B7BBF0067DE17 /* HighScore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3BA0E21C6B7BBF0067DE17 /* HighScore.m */; };
 		BC434B6C1C6A8A0900071CE8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = BC434B6B1C6A8A0900071CE8 /* Constants.m */; };
 		BC434B6F1C6A922F00071CE8 /* GameSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC434B6E1C6A922F00071CE8 /* GameSummaryViewController.m */; };
 		BC567B5B2506CAD9A71F631B /* libPods-DaMovieQuizz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD94070270C8DED656A42CA /* libPods-DaMovieQuizz.a */; };
@@ -70,6 +72,10 @@
 		BC2050F11C67B50300107C73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC3BA0DC1C6B67A30067DE17 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		BC3BA0DD1C6B67A30067DE17 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		BC3BA0DF1C6B7BBF0067DE17 /* HighScore+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HighScore+CoreDataProperties.h"; sourceTree = "<group>"; };
+		BC3BA0E01C6B7BBF0067DE17 /* HighScore+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HighScore+CoreDataProperties.m"; sourceTree = "<group>"; };
+		BC3BA0E11C6B7BBF0067DE17 /* HighScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScore.h; sourceTree = "<group>"; };
+		BC3BA0E21C6B7BBF0067DE17 /* HighScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScore.m; sourceTree = "<group>"; };
 		BC434B6A1C6A8A0900071CE8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BC434B6B1C6A8A0900071CE8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		BC434B6D1C6A922F00071CE8 /* GameSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSummaryViewController.h; sourceTree = "<group>"; };
@@ -233,6 +239,10 @@
 				BC2050D31C67B50300107C73 /* DaMovieQuizz.xcdatamodeld */,
 				BC725D3A1C68FC40002A6DD5 /* DatabaseHelper.h */,
 				BC725D3B1C68FC40002A6DD5 /* DatabaseHelper.m */,
+				BC3BA0E11C6B7BBF0067DE17 /* HighScore.h */,
+				BC3BA0E21C6B7BBF0067DE17 /* HighScore.m */,
+				BC3BA0DF1C6B7BBF0067DE17 /* HighScore+CoreDataProperties.h */,
+				BC3BA0E01C6B7BBF0067DE17 /* HighScore+CoreDataProperties.m */,
 				BC725D2C1C68E845002A6DD5 /* Movie.h */,
 				BC725D2D1C68E845002A6DD5 /* Movie.m */,
 				BC725D2A1C68E819002A6DD5 /* Movie+CoreDataProperties.h */,
@@ -470,9 +480,11 @@
 				BCE78D1E1C69159F001C98C8 /* GameLogic.m in Sources */,
 				BC725D1C1C68E1BF002A6DD5 /* TMDBDownloaderOperation.m in Sources */,
 				BC2050CC1C67B50300107C73 /* AppDelegate.m in Sources */,
+				BC3BA0E31C6B7BBF0067DE17 /* HighScore+CoreDataProperties.m in Sources */,
 				BC725D341C68E845002A6DD5 /* Actor+CoreDataProperties.m in Sources */,
 				BC6611741C67BC5200281EC7 /* HomeViewController.m in Sources */,
 				BCE78D1B1C691457001C98C8 /* GameStep.m in Sources */,
+				BC3BA0E41C6B7BBF0067DE17 /* HighScore.m in Sources */,
 				BC434B6F1C6A922F00071CE8 /* GameSummaryViewController.m in Sources */,
 				BC725D3C1C68FC40002A6DD5 /* DatabaseHelper.m in Sources */,
 				BC2050C91C67B50300107C73 /* main.m in Sources */,

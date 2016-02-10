@@ -5,6 +5,11 @@
         <attribute name="tmdbId" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="actors" inverseEntity="Movie" syncable="YES"/>
     </entity>
+    <entity name="HighScore" representedClassName="HighScore" syncable="YES">
+        <attribute name="playerName" attributeType="String" syncable="YES"/>
+        <attribute name="score" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeInSeconds" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Movie" representedClassName="Movie" syncable="YES">
         <attribute name="mediaType" attributeType="String" syncable="YES"/>
         <attribute name="posterPath" attributeType="String" syncable="YES"/>
@@ -15,5 +20,6 @@
     <elements>
         <element name="Actor" positionX="-108" positionY="252" width="128" height="90"/>
         <element name="Movie" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="HighScore" positionX="-81" positionY="135" width="128" height="90"/>
     </elements>
 </model>
