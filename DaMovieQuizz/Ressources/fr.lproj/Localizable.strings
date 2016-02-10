@@ -10,7 +10,7 @@
 "YES" = "OUI";
 "NO" = "NON";
 "Error" = "Erreur";
-"Ok" = "Ok";
+"Ok" = "OK";
 
 //HomeViewController
 "homeViewContollerTitleLabel" = "Da Movie Quizz";
