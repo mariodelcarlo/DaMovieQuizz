@@ -8,6 +8,9 @@
 
 #import "GameSummaryViewController.h"
 #import "Utils.h"
+#import "DatabaseHelper.h"
+#import  "Constants.h"
+#import  "HighScore.h"
 
 @interface GameSummaryViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -36,8 +39,6 @@
     [self.playAgainButton setTitle:NSLocalizedString(@"gameSummaryPlayAgainButton", @"") forState:UIControlStateNormal];
     [self.nameLabel setText:NSLocalizedString(@"gameSummaryNameLabel", @"")];
     [self.highScoresLabel setText:NSLocalizedString(@"gameSummaryHighScoresLabel", @"")];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +53,9 @@
         [errorAlertView show];
     }
     else{
+        if(self.highScoresSwitch.isOn && [self isAnHighScore]){
+            NSLog(@"THIS IS AN HIGHSCORE");
+        }
         [self performSegueWithIdentifier:@"unwindToGame" sender:self];
     }
 }
@@ -80,4 +84,18 @@
     return YES;
 }
 
+-(BOOL)isAnHighScore{
+    if(self.highScoresSwitch.isOn){
+        NSArray * highScores = [[DatabaseHelper sharedInstance] getHighScores];
+        if(highScores.count < NUMBER_OF_HIGHSCORES){
+            return YES;
+        }
+        HighScore * lowHighScore = highScores[0];
+        NSLog(@"lowHighScore=%d %@",[lowHighScore.score intValue],lowHighScore.playerName);
+        if((int)self.numberOfAnswers > [lowHighScore.score intValue]){
+            return YES;
+        }
+    }
+    return NO;
+}
 @end

@@ -12,3 +12,6 @@
 //key for image base url
 NSString * const USER_DEFAULTS_IMAGE_URL_KEY = @"IMAGE_URL";
 
+//Number of HighScores saved
+int NUMBER_OF_HIGHSCORES = 10;
+

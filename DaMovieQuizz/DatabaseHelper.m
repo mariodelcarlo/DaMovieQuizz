@@ -8,7 +8,7 @@
 
 #import "DatabaseHelper.h"
 #import "AppDelegate.h"
-
+#import "HighScore.h"
 
 @implementation DatabaseHelper
 
@@ -32,17 +32,8 @@
     
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
+    //TODO Handle error
     
-    /*for(int i=0; i<objects.count;i++){
-        Actor * actor = objects[i];
-        NSLog(@"------ACTEUR->%@ %lld",actor.name,actor.tmdbId);
-        
-        NSSet * movies = actor.movies;
-        for(Movie * movie in movies){
-            NSLog(@"MOVIE->%@ %lld",movie.title, movie.tmdbId);
-        }
-    }
-    */
     return objects;
 }
 
@@ -56,18 +47,7 @@
     
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
-    
-    /*
-    for(int i=0; i<objects.count;i++){
-        Movie * movie = objects[i];
-        NSLog(@"------Movie->%@ %lld",movie.title,movie.tmdbId);
-        
-        NSSet * actors = movie.actors;
-        for(Actor * actor in actors){
-            NSLog(@"ACTOR->%@ %lld",actor.name, actor.tmdbId);
-        }
-    }
-     */
+    //TODO Handle error
     
     return objects;
 }
@@ -78,6 +58,7 @@
     return min + arc4random_uniform((int)max - (int)min + 1);
 }
 
+//Get a random Actor in database
 -(Actor *)getRandomActor{
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -97,6 +78,7 @@
     return (Actor*)randomObject;
 }
 
+//Get a random Movie for an actor in database
 -(Movie*)getRandomMovieForActor:(Actor *)actor{
     NSArray * movies = [actor.movies allObjects];
     NSUInteger offset = [self randomNumberBetween:0 maxNumber:movies.count-1];
@@ -104,6 +86,7 @@
     return randomMovie;
 }
 
+//Get a random movie in database where the actor given in parameter has not played
 -(Movie*)getRandomMovieWithoutActor:(Actor *)actor{
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -123,4 +106,24 @@
     return nil;
 }
 
+//Returns an array of HighScores
+- (NSArray *)getHighScores{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Highscore" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc]init];
+    [request setEntity:entityDesc];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"" ascending:NO];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    NSError *error = nil;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    
+     for(int i=0; i<objects.count;i++){
+         HighScore * highScore = objects[i];
+         NSLog(@"------HighScore->%@ %d %d",highScore.playerName, [highScore.score intValue], [highScore.timeInSeconds intValue]);
+     }
+    return objects;
+}
 @end
