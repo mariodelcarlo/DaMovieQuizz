@@ -19,6 +19,7 @@
 -(Movie*)getRandomMovieWithoutActor:(Actor *)actor;
 - (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max;
 - (NSArray *)getHighScores;
+-(BOOL)isAnHighScoreForScore:(NSInteger)theScore time:(NSInteger)theTime;
 
 -(BOOL)saveHighScoreWithPlayerName:(NSString*)thePlayerName score:(NSInteger)theScore time:(NSInteger)theTime;
 

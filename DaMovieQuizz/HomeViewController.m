@@ -11,7 +11,7 @@
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
-
+@property (weak, nonatomic) IBOutlet UIButton *highScoresButton;
 
 @end
 
@@ -35,6 +35,8 @@
     //Set texts
     [self.titleLabel setText:NSLocalizedString(@"homeViewContollerTitleLabel", @"")];
     [self.playButton setTitle:NSLocalizedString(@"homeViewContollerPlayButton", @"") forState:UIControlStateNormal];
+    [self.highScoresButton setTitle:NSLocalizedString(@"homeViewContollerHighScoresButton", @"") forState:UIControlStateNormal];
+    
 }
 /*
 #pragma mark - Navigation

@@ -54,7 +54,7 @@
     HighScore *highScore = (HighScore *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.nameLabel.text = highScore.playerName;
     cell.scoreLabel.text = [NSString stringWithFormat:@"%d",[highScore.score intValue]];
-    cell.timeLabel.text = [Utils getTimeStringFromSeconds:[highScore.score intValue]];
+    cell.timeLabel.text = [Utils getTimeStringFromSeconds:[highScore.timeInSeconds intValue]];
 }
 
 #pragma mark UITableViewDataSource
@@ -81,10 +81,11 @@
 
 -(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     static NSString *CellIdentifier = @"HighScoreCell";
+    //TODO Localiser
     HighScoreTableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     headerView.nameLabel.text = @"Joueur";
     headerView.scoreLabel.text= @"Score";
-    headerView.timeLabel.text = @"Time";
+    headerView.timeLabel.text = @"Temps";
     
     return headerView;
 }

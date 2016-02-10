@@ -9,6 +9,7 @@
 #import "DatabaseHelper.h"
 #import "AppDelegate.h"
 #import "HighScore.h"
+#import "Constants.h"
 
 @implementation DatabaseHelper
 
@@ -145,5 +146,24 @@
         return NO;
     }
     return YES;
+}
+
+//Returns yes if this score is an high score
+-(BOOL)isAnHighScoreForScore:(NSInteger)theScore time:(NSInteger)theTime{
+    NSArray * highScores = [[DatabaseHelper sharedInstance] getHighScores];
+    if(highScores.count < NUMBER_OF_HIGHSCORES && highScores.count == 0){
+        return YES;
+    }
+    int lastIndex = highScores.count -1;
+    HighScore * lowHighScore = highScores[lastIndex];
+    NSLog(@"isAnHighScoreForScore:%d time=%d",theScore, theTime);
+    NSLog(@"lowHighScore=%d %@ %d",[lowHighScore.score intValue],lowHighScore.playerName, [lowHighScore.timeInSeconds intValue]);
+    if((int)theScore > [lowHighScore.score intValue]){
+        return YES;
+    }
+    else if((int)theScore == [lowHighScore.score intValue] && theTime < [lowHighScore.timeInSeconds intValue]){
+        return YES;
+    }
+    return NO;
 }
 @end

@@ -38,7 +38,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if([self isAnHighScore]){
+    if([[DatabaseHelper sharedInstance] isAnHighScoreForScore:self.numberOfAnswers time:(NSInteger)self.secondsSpent]){
         
         //Show alert to get the name
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"gameSummaryNameAlertTitle", @"") message:NSLocalizedString(@"gameSummaryNameAlertMessage", @"") preferredStyle:UIAlertControllerStyleAlert];
@@ -86,19 +86,7 @@
 
 
 #pragma mark private methods
-//Returns yes if this score is an high score
--(BOOL)isAnHighScore{
-    NSArray * highScores = [[DatabaseHelper sharedInstance] getHighScores];
-    if(highScores.count < NUMBER_OF_HIGHSCORES){
-        return YES;
-    }
-    HighScore * lowHighScore = highScores[0];
-    NSLog(@"lowHighScore=%d %@",[lowHighScore.score intValue],lowHighScore.playerName);
-    if((int)self.numberOfAnswers > [lowHighScore.score intValue]){
-        return YES;
-    }
-    return NO;
-}
+
 
 
 #pragma mark UIAlertViewDelegate
