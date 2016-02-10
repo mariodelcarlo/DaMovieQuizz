@@ -227,7 +227,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscores" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkS-Qw-cdK">
-                                <rect key="frame" x="20" y="309" width="121" height="28"/>
+                                <rect key="frame" x="20" y="329" width="121" height="28"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -251,7 +251,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H82-MM-EqZ">
-                                <rect key="frame" x="140" y="356" width="320" height="30"/>
+                                <rect key="frame" x="140" y="376" width="320" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" returnKeyType="done"/>
                                 <connections>
@@ -259,13 +259,13 @@
                                 </connections>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vqs-OT-eSD">
-                                <rect key="frame" x="161" y="308" width="51" height="31"/>
+                                <rect key="frame" x="161" y="328" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="tho-90-XIN" eventType="valueChanged" id="U8I-T4-SDr"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ton nom:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy7-dQ-f3N">
-                                <rect key="frame" x="20" y="357" width="100" height="28"/>
+                                <rect key="frame" x="20" y="377" width="100" height="28"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -278,7 +278,7 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KfA-lK-ZuG" secondAttribute="trailing" constant="20" id="N7a-cT-Ozq"/>
                             <constraint firstItem="NBa-DB-uRH" firstAttribute="centerX" secondItem="OOJ-uy-hA3" secondAttribute="centerX" id="NKO-IB-Ua6"/>
                             <constraint firstItem="KfA-lK-ZuG" firstAttribute="centerY" secondItem="OOJ-uy-hA3" secondAttribute="centerY" multiplier="0.4" id="NiJ-7T-vfI"/>
-                            <constraint firstItem="vkS-Qw-cdK" firstAttribute="top" secondItem="pfd-te-CyS" secondAttribute="bottom" constant="20" id="POF-Kd-LDJ"/>
+                            <constraint firstItem="vkS-Qw-cdK" firstAttribute="top" secondItem="pfd-te-CyS" secondAttribute="bottom" constant="40" id="POF-Kd-LDJ"/>
                             <constraint firstItem="pfd-te-CyS" firstAttribute="leading" secondItem="OOJ-uy-hA3" secondAttribute="leading" constant="20" id="Q2P-IB-cb2"/>
                             <constraint firstItem="pfd-te-CyS" firstAttribute="top" secondItem="KfA-lK-ZuG" secondAttribute="bottom" constant="20" id="Qfr-96-JeC"/>
                             <constraint firstItem="NBa-DB-uRH" firstAttribute="centerY" secondItem="OOJ-uy-hA3" secondAttribute="centerY" multiplier="0.2" id="RZG-Gl-HEx"/>

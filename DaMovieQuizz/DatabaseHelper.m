@@ -128,5 +128,22 @@
     return objects;
 }
 
-
+//Save an HighScore and returns TRUE if the HighScore is saved and FALSE if it's not
+-(BOOL)saveHighScoreWithPlayerName:(NSString*)thePlayerName score:(NSInteger)theScore time:(NSInteger)theTime{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    HighScore * newHighScore = [NSEntityDescription insertNewObjectForEntityForName:@"HighScore" inManagedObjectContext:context];
+    newHighScore.playerName = thePlayerName;
+    newHighScore.score = [NSNumber numberWithInteger:theScore];
+    newHighScore.timeInSeconds = [NSNumber numberWithInteger:theTime];
+    
+    NSError * saveError = nil;
+    [context save:&saveError];
+    if(saveError!=nil){
+        NSLog(@"Highscore NOT saved");
+        return NO;
+    }
+    return YES;
+}
 @end

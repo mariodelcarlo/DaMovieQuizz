@@ -55,6 +55,10 @@
     else{
         if(self.highScoresSwitch.isOn && [self isAnHighScore]){
             NSLog(@"THIS IS AN HIGHSCORE");
+            //Save in database
+            if(![[DatabaseHelper sharedInstance] saveHighScoreWithPlayerName:self.nameTextField.text score:self.numberOfAnswers time:self.secondsSpent]){
+                //TODO ALERT THE USER
+            }
         }
         [self performSegueWithIdentifier:@"unwindToGame" sender:self];
     }
