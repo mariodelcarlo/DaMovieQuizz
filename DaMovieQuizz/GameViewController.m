@@ -71,23 +71,33 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark MDBDownloaderDelegate
-- (void)didFailedTMDBDownloadWithError:(NSError *)error{
-    //TODO
+#pragma mark TMDBDownloaderDelegate
+- (void)didFailedTMDBDownloadWithError:(NSError *)error forPage:(int)page{
+    __weak GameViewController *weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString * message = [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerDownloadActorError", @""),page];
+        UIAlertView * errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:message delegate:weakSelf cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+        [errorAlertView show];
+    });
 }
 
 - (void)didFailedTMDBLoadConfiguration{
-    UIAlertView * errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"gameViewControllerConfigurationError", @"") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
-    [errorAlertView show];
+    __weak GameViewController *weakSelf = self;
+     dispatch_async(dispatch_get_main_queue(), ^{
+         UIAlertView * errorAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"gameViewControllerConfigurationError", @"") delegate:weakSelf cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Ok", @""), nil];
+         [errorAlertView show];
+     });
 }
 
 - (void)didFinishDownloading{
-    NSLog(@"NB ACTORS=%d",[[[DatabaseHelper sharedInstance] getActors] count]);
-    NSLog(@"NB FILMS %d",[[[DatabaseHelper sharedInstance] getMovies] count]);
-    self.isDownloading = NO;
-    [self hideWaitingUIElements:YES];
-    [self startGame];
-    
+    __weak GameViewController *weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"NB ACTORS=%d",[[[DatabaseHelper sharedInstance] getActors] count]);
+        NSLog(@"NB FILMS %d",[[[DatabaseHelper sharedInstance] getMovies] count]);
+        weakSelf.isDownloading = NO;
+        [weakSelf hideWaitingUIElements:YES];
+        [weakSelf startGame];
+    });
 }
 
 #pragma mark NSManagedObjectContext notification
@@ -252,7 +262,6 @@
 }
 
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
-    NSLog(@"prepareForUnwind %@",segue);
 }
 
 @end
