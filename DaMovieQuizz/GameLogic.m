@@ -30,7 +30,11 @@
 //Create a game with 10 steps already loaded
 - (void)createGame{
     self.currentGame = [[Game alloc] init];
-   
+    [self addStepsToGame];
+}
+
+
+-(void)addStepsToGame{
     //Prepare 10 questions
     NSMutableArray * steps = [[NSMutableArray alloc] init];
     for (int nb_questions = 0; nb_questions < 10; nb_questions ++) {
@@ -39,7 +43,7 @@
             [steps addObject:step];
         }
     }
-    [self.currentGame setSteps:steps];
+    [self.currentGame.steps addObjectsFromArray:steps];
 }
 
 //Create a game step: choose an Actor, a film and save the right answer
@@ -137,44 +141,38 @@
 //Method to show the next step if exists or ends game
 -(void)showNextStepWithState:(GameStepState)theState{
 
-    //TODO THE GAME MUST BE ENDLESS
     if(theState == GameStepFailed) {
         //Stop the timer
         [self endGame];
         
-        NSLog(@"LOOSE THE GAME");
         //The game is finished
         if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameEndedWithScore:timeElapsedInSeconds:)]){
             [self.gameDelegate gameEndedWithScore:self.currentGame.score timeElapsedInSeconds:self.gameElapsedTime];
         }
     }
     else{
-        //Go to the next step if there is one left
-        if(self.currentGameStep < self.currentGame.steps.count - 1){
-            //Change the step
-            self.currentGameStep = self.currentGameStep + 1;
-            
-            if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:moviePosterURL:stepNumber:state:animated:)]){
-                
-                //Display next step of the game
-                GameStep * stepNew = self.currentGame.steps[self.currentGameStep];
-                NSURL *posterURL = nil;
-                
-                if(stepNew.posterPath != nil){
-                    posterURL =[self moviePosterURLForPath:stepNew.posterPath];
-                }
-                
-                [self.gameDelegate displayGameStepWithActor:stepNew.actorName movie:stepNew.movieTitle moviePosterURL:posterURL stepNumber:self.currentGameStep state:theState animated:YES];
-            }
+        //Change the step
+        self.currentGameStep = self.currentGameStep + 1;
+        
+        //Get left steps number, add more steps if needed
+        NSInteger leftSteps = self.currentGame.steps.count - self.currentGameStep;
+        if(leftSteps < 2){
+            [self addStepsToGame];
         }
-        else{
-            //The game is finished
-            if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameEndedWithScore:timeElapsedInSeconds:)]){
-                [self.gameDelegate gameEndedWithScore:self.currentGame.score timeElapsedInSeconds:self.gameElapsedTime];
+        
+        if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:moviePosterURL:stepNumber:state:animated:)]){
+            
+            //Display next step of the game
+            GameStep * stepNew = self.currentGame.steps[self.currentGameStep];
+            NSURL *posterURL = nil;
+            
+            if(stepNew.posterPath != nil){
+                posterURL =[self moviePosterURLForPath:stepNew.posterPath];
             }
+            
+            [self.gameDelegate displayGameStepWithActor:stepNew.actorName movie:stepNew.movieTitle moviePosterURL:posterURL stepNumber:self.currentGameStep state:theState animated:YES];
         }
     }
-    
 }
 
 //Checks if an answer is right or not, and call the right method depending if the game step
@@ -194,15 +192,9 @@
 
 //Called when a new step has been displayed and the animation is finished
 -(void)newStepIsDisplayed{
-    /*//Start the timer
-     if(self.currentStepTimer !=nil){
-     [self.currentStepTimer invalidate];
-     self.currentStepTimer = nil;
-     }
-     self.currentStepTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(stepTimerTick:) userInfo:nil repeats:YES];
-     [self.currentStepTimer fire];*/
 }
 
+//
 - (NSURL *)moviePosterURLForPath:(NSString *)theShortPath{
     NSString * imageBase = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_IMAGE_URL_KEY];
     NSString  * posterImage = [imageBase stringByAppendingString:@"w500"];

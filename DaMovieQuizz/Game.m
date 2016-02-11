@@ -18,6 +18,7 @@
         self.timeSpentInSeconds = 0;
         self.gameState = GameUnknown;
         self.numberOfRightAnswers = 0;
+        self.steps = [[NSMutableArray alloc] init];
     }
     return self;
 }

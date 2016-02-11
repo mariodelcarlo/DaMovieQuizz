@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, GameState) {
 };
 
 //The steps
-@property(nonatomic, retain) NSArray * steps;
+@property(nonatomic, retain) NSMutableArray * steps;
 
 //Score
 @property(nonatomic, assign) NSInteger score;
