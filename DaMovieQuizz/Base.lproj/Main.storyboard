@@ -324,19 +324,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IS-fX-F59">
-                                                    <rect key="frame" x="112" y="12" width="46" height="20"/>
+                                                    <rect key="frame" x="137" y="12" width="46" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xug-5Y-hg4">
-                                                    <rect key="frame" x="271" y="12" width="45" height="20"/>
+                                                    <rect key="frame" x="298" y="12" width="45" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYQ-Wa-coL">
-                                                    <rect key="frame" x="436" y="12" width="38" height="20"/>
+                                                    <rect key="frame" x="461" y="12" width="38" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -344,12 +344,12 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="xug-5Y-hg4" secondAttribute="trailing" multiplier="4:2" id="8sk-fd-o27"/>
                                                 <constraint firstItem="xug-5Y-hg4" firstAttribute="centerY" secondItem="mHi-l6-r15" secondAttribute="centerY" id="9Kc-RR-6bX"/>
                                                 <constraint firstItem="8IS-fX-F59" firstAttribute="centerY" secondItem="mHi-l6-r15" secondAttribute="centerY" id="9Mu-4m-2Yn"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="SYQ-Wa-coL" secondAttribute="trailing" multiplier="4:3" id="L7B-U7-VMq"/>
+                                                <constraint firstItem="SYQ-Wa-coL" firstAttribute="centerX" secondItem="mHi-l6-r15" secondAttribute="centerX" multiplier="1.5" id="AE6-yc-ONN"/>
                                                 <constraint firstItem="SYQ-Wa-coL" firstAttribute="centerY" secondItem="mHi-l6-r15" secondAttribute="centerY" id="MM0-Zv-PlE"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="8IS-fX-F59" secondAttribute="trailing" multiplier="4:1" id="jWn-Cs-7wN"/>
+                                                <constraint firstItem="8IS-fX-F59" firstAttribute="centerX" secondItem="mHi-l6-r15" secondAttribute="centerX" multiplier="0.5" id="PWJ-dN-XLC"/>
+                                                <constraint firstItem="xug-5Y-hg4" firstAttribute="centerX" secondItem="mHi-l6-r15" secondAttribute="centerX" id="RWb-NW-lCn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
