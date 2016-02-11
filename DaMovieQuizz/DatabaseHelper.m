@@ -121,11 +121,6 @@
     NSError *error = nil;
     NSArray *objects = [context executeFetchRequest:request error:&error];
     
-    
-     for(int i=0; i<objects.count;i++){
-         HighScore * highScore = objects[i];
-         NSLog(@"------HighScore->%@ %d %d",highScore.playerName, [highScore.score intValue], [highScore.timeInSeconds intValue]);
-     }
     return objects;
 }
 
@@ -151,7 +146,7 @@
 //Returns yes if this score is an high score
 -(BOOL)isAnHighScoreForScore:(NSInteger)theScore time:(NSInteger)theTime{
     NSArray * highScores = [[DatabaseHelper sharedInstance] getHighScores];
-    if(highScores.count < NUMBER_OF_HIGHSCORES){
+    if(highScores.count == 0){
         return YES;
     }
     int lastIndex = highScores.count -1;
