@@ -33,3 +33,9 @@
 "gameSummaryNameLabel" = "Your name:";
 "gameSummaryNameAlertTitle" = "Congratulations! You're in the highscores !";
 "gameSummaryNameAlertMessage" = "Write your name here:";
+
+//HighScoresViewController
+"highScoresAlertMessage" = "Error while fetching high scores in database.";
+"highScoresHeaderPlayer" = "Player";
+"highScoresHeaderScore" = "Score";
+"highScoresHeaderTime" = "Time";

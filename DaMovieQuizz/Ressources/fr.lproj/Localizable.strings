@@ -33,3 +33,9 @@
 "gameSummaryHighScoresLabel" = "Highscores";
 "gameSummaryNameAlertTitle" = "Bravo, vous êtes dans les high scores !";
 "gameSummaryNameAlertMessage" = "Saisissez votre nom:";
+
+//HighScoresViewController
+"highScoresAlertMessage" = "Erreur lors de la récupération des données de high scores.";
+"highScoresHeaderPlayer" = "Joueur";
+"highScoresHeaderScore" = "Score";
+"highScoresHeaderTime" = "Temps";

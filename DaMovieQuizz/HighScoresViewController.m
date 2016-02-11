@@ -19,6 +19,7 @@
 
 @implementation HighScoresViewController
 
+#pragma mark view life cycle methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -38,8 +39,14 @@
     [super viewWillAppear:animated];
     NSError *error = nil;
     if (![[self fetchedResultsController] performFetch:&error]) {
-        //TODO
-        NSLog(@"fetchedResultsController:] %@ (%@)", [error localizedDescription], [error localizedFailureReason]);
+        //Show error
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"highScoresAlertMessage", @"") preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", @"Ok action") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        }];
+        
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -48,7 +55,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma mark private methods
 - (void)configureCell:(HighScoreTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     // Configure the cell
     HighScore *highScore = (HighScore *)[self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -61,7 +68,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([[self.fetchedResultsController sections] count] > 0) {
@@ -83,10 +89,15 @@
     static NSString *CellIdentifier = @"HighScoreCell";
     //TODO Localiser
     HighScoreTableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    headerView.nameLabel.text = @"Joueur";
-    headerView.scoreLabel.text= @"Score";
-    headerView.timeLabel.text = @"Temps";
+    headerView.nameLabel.text = NSLocalizedString(@"highScoresHeaderPlayer", @"");
+    headerView.scoreLabel.text= NSLocalizedString(@"highScoresHeaderScore", @"");
+    headerView.timeLabel.text = NSLocalizedString(@"highScoresHeaderTime", @"");
     
     return headerView;
+}
+
+#pragma mark actions
+- (IBAction)okTouchedUpInside:(id)sender {
+    [[self navigationController] popToRootViewControllerAnimated:YES];
 }
 @end

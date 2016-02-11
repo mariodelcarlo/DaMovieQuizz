@@ -306,6 +306,9 @@
                                 <state key="normal" title="OK">
                                     <color key="titleColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="okTouchedUpInside:" destination="pl0-wr-VGK" eventType="touchUpInside" id="xHq-8M-dx8"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="37X-cd-FwA">
                                 <rect key="frame" x="0.0" y="40" width="640" height="1036"/>
