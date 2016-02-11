@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "DatabaseHelper.h"
 
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -37,6 +38,13 @@
     [self.playButton setTitle:NSLocalizedString(@"homeViewContollerPlayButton", @"") forState:UIControlStateNormal];
     [self.highScoresButton setTitle:NSLocalizedString(@"homeViewContollerHighScoresButton", @"") forState:UIControlStateNormal];
     
+    NSArray * highScores = [[DatabaseHelper sharedInstance]getHighScores];
+    if([highScores count] == 0){
+        self.highScoresButton.enabled = NO;
+    }
+    else{
+        self.highScoresButton.enabled = YES;
+    }
 }
 /*
 #pragma mark - Navigation

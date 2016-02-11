@@ -42,6 +42,9 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="pl0-wr-VGK" kind="show" id="XeF-dP-ACt"/>
                                 </connections>
