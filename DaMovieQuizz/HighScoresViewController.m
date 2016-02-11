@@ -12,6 +12,7 @@
 #import "HighScoreTableViewCell.h"
 #import "HighScore.h"
 #import "Utils.h"
+#import "Constants.h"
 
 @interface HighScoresViewController () <NSFetchedResultsControllerDelegate>
 @property(nonatomic,retain) NSFetchedResultsController *fetchedResultsController;
@@ -30,6 +31,7 @@
     NSSortDescriptor *sortDescriptorScore = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:NO];
     NSSortDescriptor *sortDescriptorTime = [[NSSortDescriptor alloc] initWithKey:@"timeInSeconds" ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptorScore,sortDescriptorTime]];
+    [fetchRequest setFetchLimit:NUMBER_OF_HIGHSCORES]; //Only 10
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
     self.fetchedResultsController.delegate = self;
