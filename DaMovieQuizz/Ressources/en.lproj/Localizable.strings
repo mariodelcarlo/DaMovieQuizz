@@ -24,6 +24,7 @@
 "gameViewControllerQuestion" = "Did %@ played in this movie ?";
 "gameViewControllerAnswers" = "answer%@";
 "gameViewControllerConfigurationError" = "An error occured while getting the image base url.";
+"gameViewControllerDownloadActorError" = "An error occured while saving page %d of famous actors.";
 
 //GameSummaryViewController
 "gameSummaryTitleLabel" = "You loose !";

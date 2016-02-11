@@ -10,7 +10,7 @@
 #import <JLTMDbClient.h>
 
 @protocol TMDBDownloaderDelegate <NSObject>
-- (void)didFailedTMDBDownloadWithError:(NSError *)error;
+- (void)didFailedTMDBDownloadWithError:(NSError *)error forPage:(int)page;
 - (void)didFailedTMDBLoadConfiguration;
 - (void)didFinishDownloading;
 @end

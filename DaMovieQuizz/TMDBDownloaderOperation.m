@@ -33,25 +33,48 @@
     //Load Configuration
     [self loadConfigurationForImages];
     
-    //Get many pages
-    for(int page=1; page<=NB_PAGES_TO_DOWNLOAD;page++)
-    {
-        NSLog(@"page=%d",page);
-        [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbPersonPopular withParameters:@{@"page":[NSNumber numberWithInt:page]} andResponseBlock:^(id response, NSError *error) {
-            NSLog(@"RESPONSE BLOCK FOR PAGE %d",page);
-            if (!error){
-                NSArray * actors = response[@"results"];
-                
-                if(actors != nil){
-                    for(int i=0; i<actors.count;i++){
+    //Get actors
+    [self downloadPopularActors];
+}
+
+
+- (void)loadConfigurationForImages{
+    [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
+        if (!error){
+            NSString * imagesBaseUrlString = response[@"images"][@"base_url"];
+            [[NSUserDefaults standardUserDefaults] setValue:imagesBaseUrlString forKey:USER_DEFAULTS_IMAGE_URL_KEY];
+        }
+        else{
+            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailedTMDBLoadConfiguration)]){
+                [self.delegate didFailedTMDBLoadConfiguration];
+            }
+        }
+    }];
+}
+
+
+-(void)downloadPopularActorForPage:(int)page withCompletion:(void (^)(BOOL success, NSError * saveError))completionBlock {
+    [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbPersonPopular withParameters:@{@"page":[NSNumber numberWithInt:page]} andResponseBlock:^(id response, NSError *error) {
+        
+        if (!error){
+            NSArray * actors = response[@"results"];
+            if(actors != nil){
+                for(int i=0; i<actors.count;i++){
+                    //check if the actor already exists
+                    NSFetchRequest * requestActor = [[NSFetchRequest alloc] initWithEntityName:@"Actor"];
+                    NSPredicate * actorPredicate = [NSPredicate predicateWithFormat:@"tmdbId == %d",[actors[i][@"id"] intValue]];
+                    [requestActor setPredicate:actorPredicate];
+                    NSError *actorError = nil;
+                    NSArray *actorObjects = [self.threadContext executeFetchRequest:requestActor error:&actorError];
+                    if([actorObjects count] == 0){
                         
+                        //Insert in database
                         Actor * newActor = [NSEntityDescription insertNewObjectForEntityForName:@"Actor" inManagedObjectContext:self.threadContext];
                         newActor.tmdbId = [actors[i][@"id"] intValue];
                         newActor.name = actors[i][@"name"];
                         
                         NSArray *knownFor = actors[i][@"known_for"];
-                        for(int j=0; j<knownFor.count;j++)
-                        {
+                        for(int j=0; j<knownFor.count;j++){
                             //Check if the movie already exists
                             NSFetchRequest * requestMovie = [[NSFetchRequest alloc] initWithEntityName:@"Movie"];
                             NSPredicate * moviePredicate = [NSPredicate predicateWithFormat:@"tmdbId == %d",[knownFor[j][@"id"] intValue]];
@@ -71,78 +94,58 @@
                             }
                             else if ([objects count] == 1){
                                 Movie * newMovie = objects[0];
-                                NSLog(@"ici newMovie=%@",newMovie.title);
                                 [newActor addMoviesObject:newMovie];
                             }
                             else{
-                                //TODO
-                                NSLog(@"Integrity problem in Database");
+                                NSLog(@"Database integrity problem, skip");
                             }
                         }
                     }
-                    //save
-                    if (self.threadContext.hasChanges){
-                        NSError * saveError = nil;
-                        [self.threadContext save:&saveError];
-                        if(saveError!=nil){
-                            [self didFinishDownloadForPage:page withError:saveError];
-                        }
-                        else{
-                            [self didFinishDownloadForPage:page withError:nil];
-                        }
-                    }
-                    else{
-                        [self didFinishDownloadForPage:page withError:nil];
-                    }
+                }
+                //save
+                NSError * saveError = nil;
+                if(![self.threadContext save:&saveError]){
+                    if (completionBlock != nil) completionBlock(NO, saveError);
                 }
                 else{
-                    [self didFinishDownloadForPage:page withError:error];
+                    if (completionBlock != nil) completionBlock(YES, nil);
                 }
             }
             else{
-                [self didFinishDownloadForPage:page withError:error];
+                if (completionBlock != nil) completionBlock(YES, nil);
             }
-        }];
-    }
+        }
+        else{
+            if (completionBlock != nil) completionBlock(NO, error);
+        }
+    }];
 }
 
 -(void)didFinishDownloadForPage:(int)page withError:(NSError *)error{
-    NSLog(@"didFinishDownloadForPage %d error=%@",page,error);
     if(error != nil){
         self.currentDownloadFailed = YES;
+        if(self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailedTMDBDownloadWithError:forPage:)]){
+            [self.delegate didFailedTMDBDownloadWithError:error forPage:page];
+        }
     }
-    
     self.numberOfDownloadedPages = self.numberOfDownloadedPages + 1;
     
     //If we downloaded all pages, we can send a noification to the delegate
     if(self.numberOfDownloadedPages == NB_PAGES_TO_DOWNLOAD){
-        if(self.currentDownloadFailed){
-            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailedTMDBDownloadWithError:)]){
-                [self.delegate didFailedTMDBDownloadWithError:error];
-            }
-
-        }
-        else{
-            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailedTMDBDownloadWithError:)]){
+        if(!self.currentDownloadFailed){
+            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(didFinishDownloading)]){
                 [self.delegate didFinishDownloading];
             }
         }
     }
 }
 
-- (void)loadConfigurationForImages{
-    [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
-        if (!error){
-            NSString * imagesBaseUrlString = response[@"images"][@"base_url"];
-            [[NSUserDefaults standardUserDefaults] setValue:imagesBaseUrlString forKey:USER_DEFAULTS_IMAGE_URL_KEY];
-            NSLog(@"imagesBaseUrlString DS TMDBDOWNLOADOP=%@",imagesBaseUrlString);
-        }
-        else{
-            if(self.delegate != nil && [self.delegate respondsToSelector:@selector(didFailedTMDBLoadConfiguration)]){
-                [self.delegate didFailedTMDBLoadConfiguration];
-            }
-        }
-    }];
+-(void)downloadPopularActors{
+    __weak TMDBDownloaderOperation *weakSelf = self;
+    for(int page=1; page<=NB_PAGES_TO_DOWNLOAD;page++){
+        [self downloadPopularActorForPage:page withCompletion:^(BOOL success, NSError *saveError) {
+            [weakSelf didFinishDownloadForPage:page withError:saveError];
+        }];
+    }
 }
-
 @end
