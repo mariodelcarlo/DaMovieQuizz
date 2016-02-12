@@ -22,73 +22,37 @@
         self.currentGameStep = 0;
         self.gameElapsedTime = 0;
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stepIsReady:) name:@"GAME_STEP_READY" object:nil];
+    
     return self;
 }
 
-#pragma mark private methods
 
-//Create a game with 10 steps already loaded
-- (void)createGame{
-    self.currentGame = [[Game alloc] init];
-    [self addStepsToGame];
-}
+#pragma mark methods relatives to game
 
-
--(void)addStepsToGame{
-    //Prepare 10 questions
-    NSMutableArray * steps = [[NSMutableArray alloc] init];
-    for (int nb_questions = 0; nb_questions < 10; nb_questions ++) {
-        GameStep * step = [self createGameStep];
-        if(step != nil){
-            [steps addObject:step];
-        }
-    }
-    [self.currentGame.steps addObjectsFromArray:steps];
-}
-
-//Create a game step: choose an Actor, a film and save the right answer
-//returns the GameStep created
--(GameStep*)createGameStep{
-    
-    //We find a random famous actor
-    Actor * randomActor = [[DatabaseHelper sharedInstance] getRandomActor];
-    //We find a random movie in which the famous actor has played
-    Movie * randomMovie = [[DatabaseHelper sharedInstance] getRandomMovieForActor:randomActor];
-    //We find a random movie in which the famous actor has not played
-    Movie * randomMovieWithoutActor = [[DatabaseHelper sharedInstance] getRandomMovieWithoutActor:randomActor];
-    
-    NSString * movieTitleChoosen = nil;
-    NSString * posterPath = nil;
-    BOOL rightAnswer = NO;
-    //We choose randomly between this these 2 films->50% of chance the actor has played in the film and 50% he has not played
-    int randomNumber = (int)[[DatabaseHelper sharedInstance] randomNumberBetween:0 maxNumber:1];
-    
-    if(randomNumber == 0){
-        movieTitleChoosen = randomMovie.title;
-        rightAnswer = YES;
-        posterPath = randomMovie.posterPath;
-    }
-    else{
-        movieTitleChoosen = randomMovieWithoutActor.title;
-        rightAnswer = NO;
-        posterPath = randomMovieWithoutActor.posterPath;
-    }
-    
-    NSLog(@"Question=Est-ce que %@ a joué dans %@? -> %d",randomActor.name,movieTitleChoosen,rightAnswer);
-    
-    GameStep * newGameStep = [[GameStep alloc] init];
-    newGameStep.actorName = randomActor.name;
-    newGameStep.movieTitle = movieTitleChoosen;
-    newGameStep.rightAnswer = rightAnswer;
-    newGameStep.posterPath = posterPath;
-    
-    return newGameStep;
-}
-
-
--(void)startGame{
+//Init a new game
+-(void)initGame{
     //Create a game
-    [self createGame];
+    self.currentGame = [[Game alloc] init];
+    
+    //Launch the steps init
+    [self initSteps];
+}
+
+
+//Init steps for the current game
+-(void)initSteps{
+    //Start to prepare NUMBER_OF_PREPARED_STEPS questions
+    for (int nb_questions = 0; nb_questions < NUMBER_OF_PREPARED_STEPS; nb_questions ++) {
+        GameStep * step = [[GameStep alloc] init];
+        [step initGameStep];
+    }
+}
+
+-(void)launchGame{
+    if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(gameIsAboutToBelaunched)]){
+        [self.gameDelegate gameIsAboutToBelaunched];
+    }
     
     //Start the timer
     if(self.currentGameTimer !=nil){
@@ -99,6 +63,7 @@
     [self.currentGameTimer fire];
     
     if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:moviePosterURL:stepNumber:state:animated:)]){
+        
         //Display first step of the game
         GameStep * step1 = self.currentGame.steps[0];
         NSURL * posterURL = nil;
@@ -109,9 +74,21 @@
         
         [self.gameDelegate displayGameStepWithActor:step1.actorName movie:step1.movieTitle moviePosterURL:posterURL stepNumber:self .currentGameStep state:GameStepUnknown animated:NO];
     }
+    self.currentGame.isPlaying = YES;
 }
 
 
+-(void)endGame{
+    if(self.currentGameTimer !=nil){
+        [self.currentGameTimer invalidate];
+        self.currentGameTimer = nil;
+    }
+    self.currentGame.isPlaying = NO;
+}
+
+
+
+//Timer
 -(void)timerTick:(NSTimer *)timer {
     self.gameElapsedTime = self.gameElapsedTime + 1;
     if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(updateGameTimeSpentWithSeconds:)]){
@@ -119,23 +96,6 @@
     }
 }
 
--(void)endGame{
-    if(self.currentGameTimer !=nil){
-        [self.currentGameTimer invalidate];
-        self.currentGameTimer = nil;
-    }
-}
-
--(void)resumeGame{
-    
-}
-
--(void)pauseGame{
-    if(self.currentGameTimer !=nil){
-        [self.currentGameTimer invalidate];
-        self.currentGameTimer = nil;
-    }
-}
 
 
 //Method to show the next step if exists or ends game
@@ -157,7 +117,7 @@
         //Get left steps number, add more steps if needed
         NSInteger leftSteps = self.currentGame.steps.count - self.currentGameStep;
         if(leftSteps < 2){
-            [self addStepsToGame];
+            [self initSteps];
         }
         
         if(self.gameDelegate != nil && [self.gameDelegate respondsToSelector:@selector(displayGameStepWithActor:movie:moviePosterURL:stepNumber:state:animated:)]){
@@ -194,12 +154,29 @@
 -(void)newStepIsDisplayed{
 }
 
-//
+
+
+-(void)stepIsReady:(id)notication{
+    GameStep *gameStep = [notication object];
+    if(gameStep != nil){
+        [self.currentGame.steps addObject:gameStep];
+        NSLog(@"%@ %@ -> %d",gameStep.actorName,gameStep.movieTitle,gameStep.rightAnswer);
+    }
+    self.currentStepsReady = self.currentStepsReady + 1;
+    
+    if(self.currentStepsReady == NUMBER_OF_PREPARED_STEPS){
+        if(!self.currentGame.isPlaying){
+            [self launchGame];
+        }
+    }
+}
+
+#pragma mark utils
+//Get movie poster url for a poster path given
 - (NSURL *)moviePosterURLForPath:(NSString *)theShortPath{
     NSString * imageBase = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_IMAGE_URL_KEY];
     NSString  * posterImage = [imageBase stringByAppendingString:@"w500"];
     NSURL *theURL = [NSURL URLWithString:[posterImage stringByAppendingString:theShortPath]];
     return theURL;
 }
-
 @end

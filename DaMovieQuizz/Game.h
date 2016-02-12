@@ -32,4 +32,7 @@ typedef NS_ENUM(NSUInteger, GameState) {
 //Number of right answers
 @property(nonatomic, assign) NSInteger numberOfRightAnswers;
 
+//Indicates if the game is playing
+@property(nonatomic, assign)BOOL isPlaying;
+
 @end

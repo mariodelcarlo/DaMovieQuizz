@@ -14,6 +14,7 @@
 -(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*)theMovie moviePosterURL:(NSURL*)theUrl stepNumber:(int)theStepNumber state:(GameStepState)theGameState animated:(BOOL)animated;
 -(void)gameEndedWithScore:(NSInteger)theScore timeElapsedInSeconds:(int)seconds;
 -(void)updateGameTimeSpentWithSeconds:(int)seconds;
+-(void)gameIsAboutToBelaunched;
 @end
 
 @interface GameLogic : NSObject
@@ -28,12 +29,11 @@
 @property(nonatomic, retain) NSTimer *currentGameTimer;
 //Counter for the current game elapsed time in seconds
 @property(nonatomic, assign) int gameElapsedTime;
+//Number of steps ready
+@property (nonatomic,assign) int currentStepsReady;
 
-
--(void)startGame;
+-(void)initGame;
 -(void)endGame;
--(void)resumeGame;
--(void)pauseGame;
 -(void)newStepIsDisplayed;
 -(void)validateAnswer:(BOOL)theAnswer;
 

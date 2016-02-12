@@ -71,34 +71,6 @@
                         Actor * newActor = [NSEntityDescription insertNewObjectForEntityForName:@"Actor" inManagedObjectContext:self.threadContext];
                         newActor.tmdbId = [actors[i][@"id"] intValue];
                         newActor.name = actors[i][@"name"];
-                        
-                        NSArray *knownFor = actors[i][@"known_for"];
-                        for(int j=0; j<knownFor.count;j++){
-                            //Check if the movie already exists
-                            NSFetchRequest * requestMovie = [[NSFetchRequest alloc] initWithEntityName:@"Movie"];
-                            NSPredicate * moviePredicate = [NSPredicate predicateWithFormat:@"tmdbId == %d",[knownFor[j][@"id"] intValue]];
-                            [requestMovie setPredicate:moviePredicate];
-                            NSError *movieError;
-                            NSArray *objects = [self.threadContext executeFetchRequest:requestMovie error:&movieError];
-                            if([objects count] == 0){
-                                //Check if it's a movie and if title is not nil
-                                if(knownFor[j][@"title"]!=nil && [knownFor[j][@"media_type"] isEqualToString:@"movie"]){
-                                    Movie * newMovie = [NSEntityDescription insertNewObjectForEntityForName:@"Movie" inManagedObjectContext:self.threadContext];
-                                    newMovie.tmdbId = [knownFor[j][@"id"] intValue];
-                                    newMovie.title = knownFor[j][@"title"];
-                                    newMovie.mediaType = knownFor[j][@"media_type"];
-                                    newMovie.posterPath = knownFor[j][@"poster_path"];
-                                    [newActor addMoviesObject:newMovie];
-                                }
-                            }
-                            else if ([objects count] == 1){
-                                Movie * newMovie = objects[0];
-                                [newActor addMoviesObject:newMovie];
-                            }
-                            else{
-                                NSLog(@"Database integrity problem, skip");
-                            }
-                        }
                     }
                 }
                 //save

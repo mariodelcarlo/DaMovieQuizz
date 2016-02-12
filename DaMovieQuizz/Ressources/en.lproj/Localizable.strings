@@ -34,6 +34,7 @@
 "gameSummaryNameLabel" = "Your name:";
 "gameSummaryNameAlertTitle" = "Congratulations! You're in the highscores !";
 "gameSummaryNameAlertMessage" = "Write your name here:";
+"gameSummaryNameAlertErrorMessage" = "Error while saving your score.";
 
 //HighScoresViewController
 "highScoresAlertMessage" = "Error while fetching high scores in database.";

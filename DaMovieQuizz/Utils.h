@@ -10,4 +10,5 @@
 
 @interface Utils : NSObject
 +(NSString*)getTimeStringFromSeconds:(int)secondsElapsed;
++(NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max;
 @end

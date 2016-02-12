@@ -19,6 +19,7 @@
         self.gameState = GameUnknown;
         self.numberOfRightAnswers = 0;
         self.steps = [[NSMutableArray alloc] init];
+        self.isPlaying =  NO;
     }
     return self;
 }

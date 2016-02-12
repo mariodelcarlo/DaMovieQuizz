@@ -8,5 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
+//Controller displaying the game
 @interface GameViewController : UIViewController
 @end

@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Actor.h"
+#import <JLTMDbClient.h>
+
 
 //Enum for the state of the game
 typedef NS_ENUM(NSUInteger, GameStepState) {
@@ -17,7 +20,17 @@ typedef NS_ENUM(NSUInteger, GameStepState) {
 
 @interface GameStep : NSObject
 
-//Actor choosen
+//Properties needed when building the step
+//Number of films downoaded for an actor
+@property(nonatomic, assign)int numberOfActorFilmsDownloaded;
+//First random actor choosen
+@property(nonatomic,retain)Actor * randomActor1;
+//Second random actor choosen
+@property(nonatomic,retain)Actor * randomActor2;
+//Actor definitively choosen
+@property(nonatomic,retain)Actor * choosenActor;
+
+//Name of the actor choosen
 @property(nonatomic, copy)NSString * actorName;
 
 //Movie choosen
@@ -29,5 +42,5 @@ typedef NS_ENUM(NSUInteger, GameStepState) {
 //Right answer
 @property(nonatomic, assign) BOOL rightAnswer;
 
-
+-(void)initGameStep;
 @end

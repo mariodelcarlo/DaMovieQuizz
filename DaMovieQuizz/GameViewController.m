@@ -8,7 +8,6 @@
 
 #import "GameViewController.h"
 #import "TMDBDownloaderOperation.h"
-#import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 #import "DatabaseHelper.h"
 #import "GameLogic.h"
@@ -41,6 +40,7 @@
 
 @implementation GameViewController
 
+#pragma marks view life cycle methods
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -60,7 +60,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self hideWaitingUIElements:!self.isDownloading];
+    [self hideWaitingUIElements:NO];
     if(!self.isDownloading){
         [self startGame];
     }
@@ -92,10 +92,7 @@
 - (void)didFinishDownloading{
     __weak GameViewController *weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"NB ACTORS=%d",[[[DatabaseHelper sharedInstance] getActors] count]);
-        NSLog(@"NB FILMS %d",[[[DatabaseHelper sharedInstance] getMovies] count]);
         weakSelf.isDownloading = NO;
-        [weakSelf hideWaitingUIElements:YES];
         [weakSelf startGame];
     });
 }
@@ -112,7 +109,7 @@
     }
 }
 
-#pragma mark private methods - UI
+#pragma mark methods - UI
 //Hide or display the UI Elements about waiting the download of elements in database
 - (void)hideWaitingUIElements:(BOOL)mustHide{
     if(mustHide){
@@ -128,6 +125,7 @@
         self.questionLabel.alpha = 1;
         self.timeLabel.alpha = 1;
         self.numberOfAnswersLabel.alpha = 1;
+        self.posterImageView.alpha = 1;
     }
     else{
         [self.waitingActivity startAnimating];
@@ -141,6 +139,7 @@
         self.questionLabel.alpha = 0;
         self.timeLabel.alpha = 0;
         self.numberOfAnswersLabel.alpha = 0;
+        self.posterImageView.alpha = 0;
     }
 }
 
@@ -158,7 +157,7 @@
 }
 
 
-#pragma mark private methods - utils
+#pragma mark methods - utils
 - (NSString*)getQuestionForActor:(NSString*)theActor movie:(NSString*)theMovie{
     return [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerQuestion", @""), theActor];
 }
@@ -168,17 +167,20 @@
     return [NSString stringWithFormat:@"%@ %d",NSLocalizedString(@"gameViewControllerAnswers", @""),theNumber];
 }
 
-
-#pragma mark private methods - others
 -(void)startGame{
     self.gameLogic = [[GameLogic alloc] init];
     self.gameLogic.gameDelegate = self;
-    [self.gameLogic startGame];
+    [self.gameLogic initGame];
 }
 
 
-
 #pragma mark GameLogicDelegate
+//Called when the game is about to be launched
+-(void)gameIsAboutToBelaunched{
+    [self hideWaitingUIElements:YES];
+}
+
+//Called for displaying UI ELements with appropriate datas
 -(void)displayGameStepWithActor:(NSString*)theActor movie:(NSString*)theMovie moviePosterURL:(NSURL*)theUrl stepNumber:(int)theStepNumber state:(GameStepState)theGameState animated:(BOOL)animated{
    
     NSString * question = [self getQuestionForActor:theActor movie:theMovie];
@@ -196,6 +198,7 @@
             [self.posterImageView setAlpha:0.0f];
             [self.questionLabel setAlpha:0.0f];
             [self.numberOfAnswersLabel setAlpha:0.0f];
+            [self.timeLabel setAlpha:0.0f];
             
         } completion:^(BOOL finished) {
             //Disable keyboard
@@ -207,6 +210,7 @@
             //fade in
             [UIView animateWithDuration:1.0f animations:^{
                 [self.questionLabel setAlpha:1.0f];
+                [self.timeLabel setAlpha:1.0f];
                 [self.numberOfAnswersLabel setAlpha:1.0f];
                 [self.posterImageView setAlpha:1.0f];
                 
@@ -225,8 +229,8 @@
     }
 }
 
+//Called when the game ends
 -(void)gameEndedWithScore:(NSInteger)theScore timeElapsedInSeconds:(int)seconds{
-    NSLog(@"gameEndedWithScore %d timeElapsedInSeconds=%d",theScore,seconds);
     //Change background color
     [self updateQuestionBackgroundForState:GameStepFailed];
     
@@ -241,6 +245,7 @@
     [self.navigationController pushViewController:dest animated:YES];
 }
 
+//Called whne the game logic time is updated (every seconds)
 -(void)updateGameTimeSpentWithSeconds:(int)seconds{
     [self.timeLabel setText:[Utils getTimeStringFromSeconds:seconds]];
 }

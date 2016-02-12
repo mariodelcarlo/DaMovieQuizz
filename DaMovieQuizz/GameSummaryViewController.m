@@ -13,7 +13,7 @@
 #import "HighScore.h"
 #import "HighScoresViewController.h"
 
-@interface GameSummaryViewController () <UIAlertViewDelegate, UITextFieldDelegate>
+@interface GameSummaryViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeSpentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playAgainButton;
@@ -22,6 +22,7 @@
 
 @implementation GameSummaryViewController
 
+#pragma mark view life cycle methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -51,7 +52,13 @@
                 UITextField *textInput = alert.textFields.firstObject;
                 //Save in database and show high scores
                 if(![[DatabaseHelper sharedInstance] saveHighScoreWithPlayerName:textInput.text score:self.numberOfAnswers time:self.secondsSpent]){
-                    //TODO ALERT THE USER
+                    //Alert the user
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"gameSummaryNameAlertErrorMessage", @"") preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", @"") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+                    }];
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:nil];
                 }
                 else{
                     //Push High Scores
@@ -82,29 +89,6 @@
 #pragma mark actions
 - (IBAction)playAgainTouchedUpInside:(id)sender {
     [self performSegueWithIdentifier:@"unwindToGame" sender:self];
-}
-
-
-#pragma mark private methods
-
-
-
-#pragma mark UIAlertViewDelegate
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(buttonIndex == 1){
-        UITextField *textfield =  [alertView textFieldAtIndex: 0];
-        if(textfield.text.length > 0){
-            if(![[DatabaseHelper sharedInstance] saveHighScoreWithPlayerName:textfield.text score:self.numberOfAnswers time:self.secondsSpent]){
-                //TODO ALERT THE USER
-            }
-            else{
-                //Push High Scores
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-                HighScoresViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"highScoresId"];
-                [self.navigationController pushViewController:dest animated:YES];
-            }
-        }
-    }
 }
 
 #pragma mark UITextField in AlertController

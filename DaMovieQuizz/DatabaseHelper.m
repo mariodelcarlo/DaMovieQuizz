@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "HighScore.h"
 #import "Constants.h"
+#import "Utils.h"
 
 @implementation DatabaseHelper
 
@@ -53,12 +54,6 @@
     return objects;
 }
 
-//Generate a random number between 2 bounds, bounds are included
-- (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max{
-    //arc4random_uniform returns value between 0 and the bounds set in parameter
-    return min + arc4random_uniform((int)max - (int)min + 1);
-}
-
 //Get a random Actor in database
 -(Actor *)getRandomActor{
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -69,7 +64,7 @@
     NSError *error = nil;
     NSUInteger myEntityCount = [context countForFetchRequest:myRequest error:&error];
     
-    NSUInteger offset = [self randomNumberBetween:0 maxNumber:myEntityCount-1];
+    NSUInteger offset = [Utils randomNumberBetween:0 maxNumber:myEntityCount-1];
     [myRequest setFetchOffset:offset];
     [myRequest setFetchLimit:1];
     
@@ -82,7 +77,7 @@
 //Get a random Movie for an actor in database
 -(Movie*)getRandomMovieForActor:(Actor *)actor{
     NSArray * movies = [actor.movies allObjects];
-    NSUInteger offset = [self randomNumberBetween:0 maxNumber:movies.count-1];
+    NSUInteger offset = [Utils randomNumberBetween:0 maxNumber:movies.count-1];
     Movie *randomMovie = movies[offset];
     return randomMovie;
 }
@@ -100,7 +95,7 @@
     NSError *error = nil;
     NSArray *objects = [context executeFetchRequest:myRequest error:&error];
     if(error == nil){
-        NSUInteger offset = [self randomNumberBetween:0 maxNumber:objects.count-1];
+        NSUInteger offset = [Utils randomNumberBetween:0 maxNumber:objects.count-1];
         Movie *randomMovie = objects[offset];
         return randomMovie;
     }
@@ -161,4 +156,9 @@
     }
     return NO;
 }
+
+
+
+
+
 @end

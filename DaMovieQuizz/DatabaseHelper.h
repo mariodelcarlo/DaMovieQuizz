@@ -17,7 +17,6 @@
 -(Actor*)getRandomActor;
 -(Movie*)getRandomMovieForActor:(Actor *)actor;
 -(Movie*)getRandomMovieWithoutActor:(Actor *)actor;
-- (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max;
 - (NSArray *)getHighScores;
 -(BOOL)isAnHighScoreForScore:(NSInteger)theScore time:(NSInteger)theTime;
 

@@ -24,6 +24,7 @@
 "gameViewControllerAnswers" = "Score:";
 "gameViewControllerConfigurationError" = "Une erreur s'est produite lors de la récupération de l'url de base des images";
 "gameViewControllerDownloadActorError" = "Une erreur s'est produite lors de la sauvegarde de la page %d des acteurs.";
+"gameSummaryNameAlertErrorMessage" = "Une erreur s'est produite lors de la sauvegarde de votre score.";
 
 //GameSummaryViewController
 "gameSummaryTitleLabel" = "Game Over";
