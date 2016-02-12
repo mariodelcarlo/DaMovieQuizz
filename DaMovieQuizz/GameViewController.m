@@ -147,10 +147,10 @@
 //Set the question background color depending on the game step sate in params
 -(void)updateQuestionBackgroundForState:(GameStepState)theState{
     if(theState == GameStepFailed){
-        self.questionLabel.backgroundColor = [UIColor redColor];
+        self.questionLabel.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.5];
     }
     else if(theState == GameStepWon){
-        self.questionLabel.backgroundColor = [UIColor greenColor];
+        self.questionLabel.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.5];
     }
     else{
         self.questionLabel.backgroundColor = [UIColor clearColor];
@@ -165,14 +165,7 @@
 
 
 - (NSString*)getNumberOfAnswersForNumber:(int)theNumber{
-    NSString * answersString;
-    if(theNumber == 0 || theNumber == 1){
-        answersString = [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerAnswers", @""), @""];
-    }
-    else{
-        answersString = [NSString stringWithFormat:NSLocalizedString(@"gameViewControllerAnswers", @""), @"s"];
-    }
-    return [NSString stringWithFormat:@"%d %@",theNumber,answersString];
+    return [NSString stringWithFormat:@"%@ %d",NSLocalizedString(@"gameViewControllerAnswers", @""),theNumber];
 }
 
 

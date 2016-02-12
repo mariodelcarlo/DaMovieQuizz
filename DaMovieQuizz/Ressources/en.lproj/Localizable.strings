@@ -21,8 +21,8 @@
 
 //GameViewController
 "gameViewControllerWaitingLabel" = "Game is loading";
-"gameViewControllerQuestion" = "Did %@ played in this movie ?";
-"gameViewControllerAnswers" = "answer%@";
+"gameViewControllerQuestion" = "%@ played in this movie ?";
+"gameViewControllerAnswers" = "Score:";
 "gameViewControllerConfigurationError" = "An error occured while getting the image base url.";
 "gameViewControllerDownloadActorError" = "An error occured while saving page %d of famous actors.";
 

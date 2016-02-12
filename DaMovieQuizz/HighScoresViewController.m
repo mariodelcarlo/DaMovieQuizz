@@ -91,9 +91,9 @@
     static NSString *CellIdentifier = @"HighScoreCell";
     //TODO Localiser
     HighScoreTableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    headerView.nameLabel.text = NSLocalizedString(@"highScoresHeaderPlayer", @"");
-    headerView.scoreLabel.text= NSLocalizedString(@"highScoresHeaderScore", @"");
-    headerView.timeLabel.text = NSLocalizedString(@"highScoresHeaderTime", @"");
+    headerView.nameLabel.text = [NSLocalizedString(@"highScoresHeaderPlayer", @"") uppercaseString];
+    headerView.scoreLabel.text= [NSLocalizedString(@"highScoresHeaderScore", @"") uppercaseString];
+    headerView.timeLabel.text = [NSLocalizedString(@"highScoresHeaderTime", @"")uppercaseString];
     
     return headerView;
 }

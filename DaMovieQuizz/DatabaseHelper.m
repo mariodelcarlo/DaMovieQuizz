@@ -146,7 +146,7 @@
 //Returns yes if this score is an high score
 -(BOOL)isAnHighScoreForScore:(NSInteger)theScore time:(NSInteger)theTime{
     NSArray * highScores = [[DatabaseHelper sharedInstance] getHighScores];
-    if(highScores.count == 0){
+    if(highScores.count < NUMBER_OF_HIGHSCORES){
         return YES;
     }
     int lastIndex = highScores.count -1;
