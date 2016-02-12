@@ -119,6 +119,9 @@
 
 //Returns yes if this score is an high score
 -(BOOL)isAnHighScoreForScore:(NSInteger)theScore time:(NSInteger)theTime{
+    if(theScore == 0){
+        return NO;
+    }
     NSArray * highScores = [[DatabaseHelper sharedInstance] getHighScores];
     if(highScores.count < NUMBER_OF_HIGHSCORES){
         return YES;
