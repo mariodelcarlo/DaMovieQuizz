@@ -82,25 +82,6 @@
     return randomMovie;
 }
 
-//Get a random movie in database where the actor given in parameter has not played
--(Movie*)getRandomMovieWithoutActor:(Actor *)actor{
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSFetchRequest *myRequest = [[NSFetchRequest alloc] init];
-    [myRequest setEntity: [NSEntityDescription entityForName:@"Movie" inManagedObjectContext:context]];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NONE actors.name CONTAINS[cd] %@",actor.name];
-    [myRequest setPredicate:predicate];
-    
-    NSError *error = nil;
-    NSArray *objects = [context executeFetchRequest:myRequest error:&error];
-    if(error == nil){
-        NSUInteger offset = [Utils randomNumberBetween:0 maxNumber:objects.count-1];
-        Movie *randomMovie = objects[offset];
-        return randomMovie;
-    }
-    return nil;
-}
 
 //Get a random movie in database where the actor given in parameter has not played
 -(Movie*)getRandomMovieWithActor:(Actor*)actor1 withoutActor:(Actor *)actor2{
@@ -112,26 +93,6 @@
     
     NSUInteger offset = [Utils randomNumberBetween:0 maxNumber:result.count-1];
     Movie *randomMovie = result[offset];
-    
-    
-    /*NSLog(@"actor1=%@ actor2=%@",actor1.name,actor2.name);
-    NSLog(@"-----------------moviesActor1");
-    for(Movie * movie in moviesActor1){
-        NSLog(@"%@",movie.title);
-    }
-    NSLog(@"-----------------");
-    
-    NSLog(@"-----------------moviesActor2");
-    for(Movie * movie in moviesActor2){
-        NSLog(@"%@",movie.title);
-    }
-    NSLog(@"-----------------");
-
-    NSLog(@"-----------------RESULTAT");
-    for(Movie * movie in result){
-        NSLog(@"%@",movie.title);
-    }
-    NSLog(@"-----------------");*/
     
     return randomMovie;
 }

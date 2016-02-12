@@ -94,8 +94,6 @@
         
         //Choose a movie in which choosenActor has notplayed
         movieWithoutActor = [[DatabaseHelper sharedInstance]getRandomMovieWithActor:self.randomActor2 withoutActor:choosenActor];
-        //NSLog(@"%@ n'a pas joué dans %@",choosenActor.name,movieWithoutActor.title);
-        //NSLog(@"%@ a joué dans %@",self.randomActor2.name,movieWithoutActor.title);
     }
     else{
         choosenActor = self.randomActor2;
@@ -105,8 +103,6 @@
         
         //Choose a movie in which choosenActor has notplayed
         movieWithoutActor = [[DatabaseHelper sharedInstance]getRandomMovieWithActor:self.randomActor1 withoutActor:choosenActor];
-        //NSLog(@"%@ n'a pas joué dans %@",choosenActor.name,movieWithoutActor.title);
-        //NSLog(@"%@ a joué dans %@",self.randomActor1.name,movieWithoutActor.title);
     }
     
     
