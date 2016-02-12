@@ -65,8 +65,8 @@
 -(void)didFinishDownloadFilmsForActor:(int64_t)actorId withError:(NSError *)error{
     self.numberOfActorFilmsDownloaded = self. numberOfActorFilmsDownloaded + 1;
     if(error != nil){
-        //TODO
-        NSLog(@"ERROR TO HANDLE");
+        //TODO: handle the error
+        NSLog(@"ERROR TO HANDLE ");
     }
     else{
         if(self. numberOfActorFilmsDownloaded == 2){

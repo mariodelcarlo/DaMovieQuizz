@@ -89,7 +89,6 @@
 
 -(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     static NSString *CellIdentifier = @"HighScoreCell";
-    //TODO Localiser
     HighScoreTableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     headerView.nameLabel.text = [NSLocalizedString(@"highScoresHeaderPlayer", @"") uppercaseString];
     headerView.scoreLabel.text= [NSLocalizedString(@"highScoresHeaderScore", @"") uppercaseString];

@@ -34,22 +34,7 @@
     
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
-    //TODO Handle error
-    
-    return objects;
-}
-
-//Returns an array of Movies
-- (NSArray *)getMovies{
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Movie" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc]init];
-    [request setEntity:entityDesc];
-    
-    NSError *error;
-    NSArray *objects = [context executeFetchRequest:request error:&error];
-    //TODO Handle error
+    //TODO: Handle error
     
     return objects;
 }

@@ -11,7 +11,7 @@
 @implementation Utils
 
 +(NSString*)getTimeStringFromSeconds:(int)secondsElapsed{
-    //TODO Check if hour
+    //TODO: Check if hour
     int seconds = secondsElapsed % 60;
     int minutes = secondsElapsed / 60;
     return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
