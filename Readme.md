@@ -8,6 +8,7 @@ J’ai utilisé CoreData pour sauvegarder des informations en base, ayant l’ha
 
 Pour le fonctionnement général, j’ai choisi de sauvegarder au premier lancement du jeu, des acteurs populaires fournis. Je lance la requête person/popular sur les 2 premières pages, ce qui fait 40 acteurs populaires. 
 Ensuite, je prépare 10 questions. Quand il n’y a plus que 2 questions à venir, je re-prépare 10 questions. Ce nombre est une constante paramétrable.
+
 Pour gérer le le tirage au sort acteur/film pour qu'il y'ait 50% de chance que le résultat soit VRAI ou FAUX, voici comment je procède:
 - Je choisi au hasard 2 acteurs dans ma base de données A et B
 - Je récupère la liste des films dans lesquels ils ont joué: 1 liste pour chaque acteur (Je fais une requête dans l’API person/{id}/credits et je sauvegarde en base les films et le lien film/acteur)
