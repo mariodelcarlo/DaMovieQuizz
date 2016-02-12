@@ -11,6 +11,7 @@
 #import "DatabaseHelper.h"
 #import "AppDelegate.h"
 #import "Utils.h"
+#import "Constants.h"
 
 @implementation GameStep
 
@@ -112,7 +113,7 @@
     self.posterPath = choosenMovie.posterPath;
     self.rightAnswer = hasPlayed;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"GAME_STEP_READY" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GAME_STEP_READY_NOTIFICATION object:self];
 }
 
 //Helper method, lauch the correct API request to download films for the actorId passed in parameters

@@ -22,7 +22,7 @@
         self.currentGameStep = 0;
         self.gameElapsedTime = 0;
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stepIsReady:) name:@"GAME_STEP_READY" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stepIsReady:) name:GAME_STEP_READY_NOTIFICATION object:nil];
     
     return self;
 }

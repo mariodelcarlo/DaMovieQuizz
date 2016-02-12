@@ -14,3 +14,6 @@ extern int NUMBER_OF_HIGHSCORES;
 
 //Number of prepared questions saved
 extern int NUMBER_OF_PREPARED_STEPS;
+
+//Name of the notification when a game step is ready
+extern NSString * const GAME_STEP_READY_NOTIFICATION;
