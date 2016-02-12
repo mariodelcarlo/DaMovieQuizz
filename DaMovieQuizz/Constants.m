@@ -15,3 +15,5 @@ NSString * const USER_DEFAULTS_IMAGE_URL_KEY = @"IMAGE_URL";
 //Number of HighScores saved
 int NUMBER_OF_HIGHSCORES = 10;
 
+//Number of prepared questions saved
+int NUMBER_OF_PREPARED_STEPS = 10;
