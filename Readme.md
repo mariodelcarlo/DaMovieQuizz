@@ -18,6 +18,7 @@ Pour gérer le le tirage au sort acteur/film pour qu'il y'ait 50% de chance que 
 - Je choisis au hasard un film parmi ces 2 films->j’ai 50% de chances que la réponse soit oui ou non, ce sera le film affiché dans ma question
 
 On pourrait améliorer cela en se basant sur plusieurs acteurs et pas seulement 2.
+
 Je sauvegarde en base les films au fur et à mesure, et je n’envoie une requête vers l’Api que si je n’ai pas la liste des films pour un acteur donné.
 
 L’image de l’affiche du film n’est pas sauvegardée en base: seul le poster_path est sauvé. J’avais peur que cela surcharge l’appli mais du coup, il est nécessaire d’avoir une connexion internet pour jouer. On pourrait afficher le nom du film si on a des problèmes de réseau par exemple pour pouvoir continuer à jouer. Une réflexion plus approfondie est à faire à ce niveau la.
