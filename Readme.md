@@ -3,6 +3,7 @@ Voilà quelques explications concernant mon code et des idées d’amélioration
 J’ai réalisé une application iPhone qui s’éxecute à partir d’iOS 8. Normalement, je gère les versions à partir d’iOS7 (car il y a encore environ 7% de gens  qui l’utilisent d’après les stats) mais j’ai eu un problème avec l’alertview en mode UIAlertViewStylePlainTextInput donc j’ai utilisé des UIAlertController pour aller plus vite.
 
 Pour ne pas ré-inventer la roue, j’ai utilisé la librairie JLTMDbClient  qui s’appuie sur AFNetWorking qui était citée dans la page API de themoviedb. Elle m’a semblé plus à jour que l’autre proposée. Je l’ai installée via CooaPods.
+
 J’ai utilisé CoreData pour sauvegarder des informations en base, ayant l’habitude de travailler avec CoreData plutôt que Sqlite et cela est plus pratique pour faire des liens entre acteurs et films qu’un fichier texte.
 
 Pour le fonctionnement général, j’ai choisi de sauvegarder au premier lancement du jeu, des acteurs populaires fournis. Je lance la requête person/popular sur les 2 premières pages, ce qui fait 40 acteurs populaires. 
@@ -17,6 +18,7 @@ Pour gérer le le tirage au sort acteur/film pour qu'il y'ait 50% de chance que 
 
 On pourrait améliorer cela en se basant sur plusieurs acteurs et pas seulement 2.
 Je sauvegarde en base les films au fur et à mesure, et je n’envoie une requête vers l’Api que si je n’ai pas la liste des films pour un acteur donné.
+
 L’image de l’affiche du film n’est pas sauvegardée en base: seul le poster_path est sauvé. J’avais peur que cela surcharge l’appli mais du coup, il est nécessaire d’avoir une connexion internet pour jouer. On pourrait afficher le nom du film si on a des problèmes de réseau par exemple pour pouvoir continuer à jouer. Une réflexion plus approfondie est à faire à ce niveau la.
 Il faudrait aussi avoir plus d’acteurs et rafraîchir cette liste: trouver une meilleure règle à appliquer. 
 
