@@ -36,7 +36,6 @@
     else{
         //Get films in which randomActor1 hasPlayed
         if([self.randomActor1.movies count] == 0){
-            __weak GameStep *weakSelf = self;
             NSString * actorId = [NSString stringWithFormat:@"%lld",self.randomActor1.tmdbId];
             [self downloadFilmsForActorWithID:actorId withCompletion:^(BOOL success, NSError *saveError) {
                 [self didFinishDownloadFilmsForActor:[actorId intValue] withError:saveError];
@@ -49,7 +48,6 @@
         
         //Get films in which randomActorZ hasPlayed
         if([self.randomActor2.movies count] == 0){
-            __weak GameStep *weakSelf = self;
             NSString * actorId2 = [NSString stringWithFormat:@"%lld",self.randomActor2.tmdbId];
             [self downloadFilmsForActorWithID:[NSString stringWithFormat:@"%lld",self.randomActor2.tmdbId] withCompletion:^(BOOL success, NSError *saveError) {
                 [self didFinishDownloadFilmsForActor:[actorId2 intValue] withError:saveError];

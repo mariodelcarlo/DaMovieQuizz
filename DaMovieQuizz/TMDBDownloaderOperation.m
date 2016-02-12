@@ -18,9 +18,10 @@
 @implementation TMDBDownloaderOperation
 
 -(id) init{
-    if (![super init]) return nil;
-    self.currentDownloadFailed = NO;
-    self.numberOfDownloadedPages = 0;
+    if ((self = [super init])){
+        self.currentDownloadFailed = NO;
+        self.numberOfDownloadedPages = 0;
+    }
     return self;
 }
 
