@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeSpentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playAgainButton;
+@property (weak, nonatomic) IBOutlet UIButton *homeButton;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfAnswersLabel;
 @end
 
@@ -35,6 +36,7 @@
     [self.timeSpentLabel setText:[NSString stringWithFormat:NSLocalizedString(@"gameSummaryTimeSpentLabel", @""), [Utils getTimeStringFromSeconds:self.secondsSpent]]];
     [self.numberOfAnswersLabel setText:[NSString stringWithFormat:NSLocalizedString(@"gameSummaryNumberOfAnswers", @""), self.numberOfAnswers]];
     [self.playAgainButton setTitle:NSLocalizedString(@"gameSummaryPlayAgainButton", @"") forState:UIControlStateNormal];
+    [self.homeButton setTitle:NSLocalizedString(@"gameSummaryHomeButton", @"") forState:UIControlStateNormal];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -89,6 +91,9 @@
 #pragma mark actions
 - (IBAction)playAgainTouchedUpInside:(id)sender {
     [self performSegueWithIdentifier:@"unwindToGame" sender:self];
+}
+- (IBAction)homeTouchedUpInside:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark UITextField in AlertController

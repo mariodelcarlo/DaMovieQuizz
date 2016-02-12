@@ -295,9 +295,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caQ-oI-Tz5">
-                                <rect key="frame" x="271" y="1065" width="99" height="51"/>
+                                <rect key="frame" x="333" y="1016" width="307" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Na7-e7-cjS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,24 +309,44 @@
                                     <action selector="playAgainTouchedUpInside:" destination="tho-90-XIN" eventType="touchUpInside" id="m7y-Ct-hq6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3U-xM-7RY">
+                                <rect key="frame" x="0.0" y="1016" width="307" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4vU-vp-iEh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeTouchedUpInside:" destination="tho-90-XIN" eventType="touchUpInside" id="Ire-e9-faV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.43137254899999999" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="K3U-xM-7RY" firstAttribute="leading" secondItem="OOJ-uy-hA3" secondAttribute="leading" id="18j-OK-KlD"/>
+                            <constraint firstItem="caQ-oI-Tz5" firstAttribute="width" secondItem="OOJ-uy-hA3" secondAttribute="width" multiplier="0.48" id="LSJ-91-gNa"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KfA-lK-ZuG" secondAttribute="trailing" constant="20" id="N7a-cT-Ozq"/>
                             <constraint firstItem="NBa-DB-uRH" firstAttribute="centerX" secondItem="OOJ-uy-hA3" secondAttribute="centerX" id="NKO-IB-Ua6"/>
                             <constraint firstItem="KfA-lK-ZuG" firstAttribute="centerY" secondItem="OOJ-uy-hA3" secondAttribute="centerY" multiplier="0.4" id="NiJ-7T-vfI"/>
                             <constraint firstItem="pfd-te-CyS" firstAttribute="leading" secondItem="OOJ-uy-hA3" secondAttribute="leading" constant="20" id="Q2P-IB-cb2"/>
                             <constraint firstItem="pfd-te-CyS" firstAttribute="top" secondItem="KfA-lK-ZuG" secondAttribute="bottom" constant="20" id="Qfr-96-JeC"/>
                             <constraint firstItem="NBa-DB-uRH" firstAttribute="centerY" secondItem="OOJ-uy-hA3" secondAttribute="centerY" multiplier="0.2" id="RZG-Gl-HEx"/>
-                            <constraint firstItem="caQ-oI-Tz5" firstAttribute="centerX" secondItem="OOJ-uy-hA3" secondAttribute="centerX" id="RZM-QE-oPQ"/>
                             <constraint firstItem="KfA-lK-ZuG" firstAttribute="leading" secondItem="OOJ-uy-hA3" secondAttribute="leading" constant="20" id="Rmv-UH-ddA"/>
+                            <constraint firstItem="Vvy-DF-i4U" firstAttribute="top" secondItem="K3U-xM-7RY" secondAttribute="bottom" constant="20" id="cZ6-Bm-EzW"/>
                             <constraint firstItem="Vvy-DF-i4U" firstAttribute="top" secondItem="caQ-oI-Tz5" secondAttribute="bottom" constant="20" id="n5O-JR-2bE"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pfd-te-CyS" secondAttribute="trailing" constant="20" id="rVC-67-rA1"/>
+                            <constraint firstItem="K3U-xM-7RY" firstAttribute="width" secondItem="OOJ-uy-hA3" secondAttribute="width" multiplier="0.48" id="wPd-fR-KOU"/>
+                            <constraint firstAttribute="trailing" secondItem="caQ-oI-Tz5" secondAttribute="trailing" id="zt4-Er-Vh4"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="640" height="1136"/>
                     <connections>
+                        <outlet property="homeButton" destination="K3U-xM-7RY" id="b0F-oN-0JU"/>
                         <outlet property="numberOfAnswersLabel" destination="pfd-te-CyS" id="X5n-TI-byz"/>
                         <outlet property="playAgainButton" destination="caQ-oI-Tz5" id="RPJ-xm-ZI7"/>
                         <outlet property="timeSpentLabel" destination="KfA-lK-ZuG" id="N10-83-47v"/>

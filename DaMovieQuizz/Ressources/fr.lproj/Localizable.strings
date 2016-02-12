@@ -31,6 +31,7 @@
 "gameSummaryTimeSpentLabel" = "Temps écoulé: %@";
 "gameSummaryNumberOfAnswers" = "Nombre de bonnes réponses: %d";
 "gameSummaryPlayAgainButton" = "Play again";
+"gameSummaryHomeButton" = "Home";
 "gameSummaryNameLabel" = "Ton nom:";
 "gameSummaryHighScoresLabel" = "Highscores";
 "gameSummaryNameAlertTitle" = "Bravo, vous êtes dans les high scores !";

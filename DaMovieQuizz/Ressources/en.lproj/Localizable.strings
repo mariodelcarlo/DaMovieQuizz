@@ -31,6 +31,7 @@
 "gameSummaryTimeSpentLabel" = "Time spent: %@";
 "gameSummaryNumberOfAnswers" = "Number of right answers: %d";
 "gameSummaryPlayAgainButton" = "Play again";
+"gameSummaryHomeButton" = "Home";
 "gameSummaryNameLabel" = "Your name:";
 "gameSummaryNameAlertTitle" = "Congratulations! You're in the highscores !";
 "gameSummaryNameAlertMessage" = "Write your name here:";
