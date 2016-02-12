@@ -77,6 +77,7 @@
             textField.autocorrectionType = UITextAutocorrectionTypeNo;
             textField.keyboardType = UIKeyboardTypeAlphabet;
             [textField addTarget:self action:@selector(alertTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+            textField.delegate = self;
         }];
         [self presentViewController:alert animated:YES completion:nil];
     }
@@ -102,6 +103,19 @@
         UITextField *textfield = alertController.textFields.firstObject;
         UIAlertAction *okAction = alertController.actions.lastObject;
         okAction.enabled = textfield.text.length > 1;
+        
     }
 }
+- (BOOL)textField: (UITextField *)theTextField shouldChangeCharactersInRange: (NSRange)range replacementString: (NSString *)string {
+    // Prevent crashing undo bug – see note below.
+    if(range.length + range.location > theTextField.text.length){
+        return NO;
+    }
+    
+    NSUInteger newLength = [theTextField.text length] + [string length] - range.length;
+    //Limit the text length to 10 caracters
+    
+    return newLength <= 10;
+}
+
 @end
