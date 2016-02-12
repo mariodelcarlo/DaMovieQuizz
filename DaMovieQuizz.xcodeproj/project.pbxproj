@@ -32,6 +32,7 @@
 		BC725D351C68E845002A6DD5 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D311C68E845002A6DD5 /* Actor.m */; };
 		BC725D381C68F57B002A6DD5 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D371C68F57B002A6DD5 /* GameViewController.m */; };
 		BC725D3C1C68FC40002A6DD5 /* DatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC725D3B1C68FC40002A6DD5 /* DatabaseHelper.m */; };
+		BCD709051C6E555F005D14B2 /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = BCD709041C6E555F005D14B2 /* Readme.md */; };
 		BCE78D181C6912E9001C98C8 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE78D171C6912E9001C98C8 /* Game.m */; };
 		BCE78D1B1C691457001C98C8 /* GameStep.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE78D1A1C691457001C98C8 /* GameStep.m */; };
 		BCE78D1E1C69159F001C98C8 /* GameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE78D1D1C69159F001C98C8 /* GameLogic.m */; };
@@ -104,6 +105,7 @@
 		BC725D371C68F57B002A6DD5 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		BC725D3A1C68FC40002A6DD5 /* DatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseHelper.h; sourceTree = "<group>"; };
 		BC725D3B1C68FC40002A6DD5 /* DatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseHelper.m; sourceTree = "<group>"; };
+		BCD709041C6E555F005D14B2 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		BCE78D161C6912E9001C98C8 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		BCE78D171C6912E9001C98C8 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		BCE78D191C691457001C98C8 /* GameStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStep.h; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		BC2050BB1C67B50300107C73 = {
 			isa = PBXGroup;
 			children = (
+				BCD709041C6E555F005D14B2 /* Readme.md */,
 				BC2050C61C67B50300107C73 /* DaMovieQuizz */,
 				BC2050E31C67B50300107C73 /* DaMovieQuizzTests */,
 				BC2050EE1C67B50300107C73 /* DaMovieQuizzUITests */,
@@ -490,6 +493,7 @@
 			files = (
 				BC725D381C68F57B002A6DD5 /* GameViewController.m in Sources */,
 				BC725D351C68E845002A6DD5 /* Actor.m in Sources */,
+				BCD709051C6E555F005D14B2 /* Readme.md in Sources */,
 				BC2050D51C67B50300107C73 /* DaMovieQuizz.xcdatamodeld in Sources */,
 				BCE78D181C6912E9001C98C8 /* Game.m in Sources */,
 				BC725D331C68E845002A6DD5 /* Movie.m in Sources */,
