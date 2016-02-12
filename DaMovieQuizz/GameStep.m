@@ -79,21 +79,36 @@
 //Choose the movie and film that will be displayed as a question
 //Sent a notification with these elements, to be catched by gameLogic
 -(void)createGameStep{
+    
+    Movie * movieWithoutActor = nil;
+    Movie * movieWithActor = nil;
+    
     //Choose an actor between these two
     Actor * choosenActor = nil;
     int randomNumber = (int)[Utils randomNumberBetween:0 maxNumber:1];
     if(randomNumber == 0){
         choosenActor = self.randomActor1;
+       
+        //Choose a movie in which choosenActor has played
+        movieWithActor = [[DatabaseHelper sharedInstance]getRandomMovieForActor:choosenActor];
+        
+        //Choose a movie in which choosenActor has notplayed
+        movieWithoutActor = [[DatabaseHelper sharedInstance]getRandomMovieWithActor:self.randomActor2 withoutActor:choosenActor];
+        //NSLog(@"%@ n'a pas joué dans %@",choosenActor.name,movieWithoutActor.title);
+        //NSLog(@"%@ a joué dans %@",self.randomActor2.name,movieWithoutActor.title);
     }
     else{
         choosenActor = self.randomActor2;
+        
+        //Choose a movie in which choosenActor has played
+        movieWithActor = [[DatabaseHelper sharedInstance]getRandomMovieForActor:choosenActor];
+        
+        //Choose a movie in which choosenActor has notplayed
+        movieWithoutActor = [[DatabaseHelper sharedInstance]getRandomMovieWithActor:self.randomActor1 withoutActor:choosenActor];
+        //NSLog(@"%@ n'a pas joué dans %@",choosenActor.name,movieWithoutActor.title);
+        //NSLog(@"%@ a joué dans %@",self.randomActor1.name,movieWithoutActor.title);
     }
     
-    //Choose a movie in which choosenActor has played
-    Movie * movieWithActor = [[DatabaseHelper sharedInstance]getRandomMovieForActor:choosenActor];
-    
-    //Choose a movie in which choosenActor has notplayed
-    Movie * movieWithoutActor = [[DatabaseHelper sharedInstance]getRandomMovieWithoutActor:choosenActor];
     
     //Choose a random movie between these 2
     Movie * choosenMovie = nil;

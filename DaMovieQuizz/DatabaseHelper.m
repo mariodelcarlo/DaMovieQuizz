@@ -102,6 +102,40 @@
     return nil;
 }
 
+//Get a random movie in database where the actor given in parameter has not played
+-(Movie*)getRandomMovieWithActor:(Actor*)actor1 withoutActor:(Actor *)actor2{
+    
+    NSArray * moviesActor1 = [actor1.movies allObjects];
+    NSArray * moviesActor2 = [actor2.movies allObjects];
+    NSMutableArray *result = [NSMutableArray arrayWithArray:moviesActor1];
+    [result removeObjectsInArray:moviesActor2];
+    
+    NSUInteger offset = [Utils randomNumberBetween:0 maxNumber:result.count-1];
+    Movie *randomMovie = result[offset];
+    
+    
+    /*NSLog(@"actor1=%@ actor2=%@",actor1.name,actor2.name);
+    NSLog(@"-----------------moviesActor1");
+    for(Movie * movie in moviesActor1){
+        NSLog(@"%@",movie.title);
+    }
+    NSLog(@"-----------------");
+    
+    NSLog(@"-----------------moviesActor2");
+    for(Movie * movie in moviesActor2){
+        NSLog(@"%@",movie.title);
+    }
+    NSLog(@"-----------------");
+
+    NSLog(@"-----------------RESULTAT");
+    for(Movie * movie in result){
+        NSLog(@"%@",movie.title);
+    }
+    NSLog(@"-----------------");*/
+    
+    return randomMovie;
+}
+
 //Returns an array of HighScores, sorted by higher score and then lower time
 - (NSArray *)getHighScores{
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];

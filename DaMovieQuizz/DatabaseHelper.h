@@ -16,7 +16,7 @@
 - (NSArray *)getMovies;
 -(Actor*)getRandomActor;
 -(Movie*)getRandomMovieForActor:(Actor *)actor;
--(Movie*)getRandomMovieWithoutActor:(Actor *)actor;
+-(Movie*)getRandomMovieWithActor:(Actor*)actor1 withoutActor:(Actor *)actor2;
 - (NSArray *)getHighScores;
 -(BOOL)isAnHighScoreForScore:(NSInteger)theScore time:(NSInteger)theTime;
 
