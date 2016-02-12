@@ -29,7 +29,7 @@
 //GameSummaryViewController
 "gameSummaryTitleLabel" = "You loose !";
 "gameSummaryTimeSpentLabel" = "Time spent: %@";
-"gameSummaryNumberOfAnswers" = "Number of right answers: %d";
+"gameSummaryNumberOfAnswers" = "Score: %d";
 "gameSummaryPlayAgainButton" = "Play again";
 "gameSummaryHomeButton" = "Home";
 "gameSummaryNameLabel" = "Your name:";

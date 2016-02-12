@@ -163,7 +163,7 @@
     GameStep *gameStep = [notication object];
     if(gameStep != nil){
         [self.currentGame.steps addObject:gameStep];
-        NSLog(@"%@ %@ -> %d",gameStep.actorName,gameStep.movieTitle,gameStep.rightAnswer);
+        //NSLog(@"%@ %@ -> %d",gameStep.actorName,gameStep.movieTitle,gameStep.rightAnswer);
     }
     self.currentStepsReady = self.currentStepsReady + 1;
     

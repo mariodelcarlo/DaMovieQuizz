@@ -29,7 +29,7 @@
 //GameSummaryViewController
 "gameSummaryTitleLabel" = "Game Over";
 "gameSummaryTimeSpentLabel" = "Temps écoulé: %@";
-"gameSummaryNumberOfAnswers" = "Nombre de bonnes réponses: %d";
+"gameSummaryNumberOfAnswers" = "Score: %d";
 "gameSummaryPlayAgainButton" = "Play again";
 "gameSummaryHomeButton" = "Home";
 "gameSummaryNameLabel" = "Ton nom:";
