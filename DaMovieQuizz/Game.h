@@ -23,14 +23,6 @@ typedef NS_ENUM(NSUInteger, GameState) {
 //Score
 @property(nonatomic, assign) NSInteger score;
 
-//Time spent
-@property(nonatomic, assign) NSInteger timeSpentInSeconds;
-
-//State of the game
-@property(nonatomic, assign)GameState gameState;
-
-//Number of right answers
-@property(nonatomic, assign) NSInteger numberOfRightAnswers;
 
 //Indicates if the game is playing
 @property(nonatomic, assign)BOOL isPlaying;

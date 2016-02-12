@@ -112,7 +112,6 @@
     NSError * saveError = nil;
     [context save:&saveError];
     if(saveError!=nil){
-        NSLog(@"Highscore NOT saved");
         return NO;
     }
     return YES;
@@ -126,8 +125,7 @@
     }
     int lastIndex = highScores.count -1;
     HighScore * lowHighScore = highScores[lastIndex];
-    NSLog(@"isAnHighScoreForScore:%d time=%d",theScore, theTime);
-    NSLog(@"lowHighScore=%d %@ %d",[lowHighScore.score intValue],lowHighScore.playerName, [lowHighScore.timeInSeconds intValue]);
+    
     if((int)theScore > [lowHighScore.score intValue]){
         return YES;
     }

@@ -13,7 +13,6 @@
 @interface DatabaseHelper : NSObject
 + (id)sharedInstance;
 - (NSArray *)getActors;
-- (NSArray *)getMovies;
 -(Actor*)getRandomActor;
 -(Movie*)getRandomMovieForActor:(Actor *)actor;
 -(Movie*)getRandomMovieWithActor:(Actor*)actor1 withoutActor:(Actor *)actor2;

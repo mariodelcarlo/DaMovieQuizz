@@ -15,9 +15,6 @@
     self = [super init];
     if (self) {
         self.score = 0;
-        self.timeSpentInSeconds = 0;
-        self.gameState = GameUnknown;
-        self.numberOfRightAnswers = 0;
         self.steps = [[NSMutableArray alloc] init];
         self.isPlaying =  NO;
     }

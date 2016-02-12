@@ -47,7 +47,6 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"gameSummaryNameAlertTitle", @"") message:NSLocalizedString(@"gameSummaryNameAlertMessage", @"") preferredStyle:UIAlertControllerStyleAlert];
     
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-                                           NSLog(@"Cancel action");
         }];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", @"Ok action") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
