@@ -142,6 +142,7 @@
                 NSArray * movies = [responseDict objectForKey:@"cast"];
                 for(NSDictionary * movieDico in movies){
                     //Don't get movie with poster_path nil
+                    //JSON send NSNUll not nil?
                     NSString * posterPath = [movieDico objectForKey:@"poster_path"];
                     if(posterPath != nil && posterPath != [NSNull null] && ![posterPath isEqualToString:@""]){
                         Movie * newMovie = [NSEntityDescription insertNewObjectForEntityForName:@"Movie" inManagedObjectContext:context];
