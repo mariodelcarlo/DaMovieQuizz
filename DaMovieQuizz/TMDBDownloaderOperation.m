@@ -37,7 +37,7 @@
     [self downloadPopularActors];
 }
 
-
+//Get base url for images
 - (void)loadConfigurationForImages{
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
         if (!error){
@@ -52,7 +52,7 @@
     }];
 }
 
-
+//Get the popular actors for the page set in parameters
 -(void)downloadPopularActorForPage:(int)page withCompletion:(void (^)(BOOL success, NSError * saveError))completionBlock {
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbPersonPopular withParameters:@{@"page":[NSNumber numberWithInt:page]} andResponseBlock:^(id response, NSError *error) {
         
@@ -67,7 +67,6 @@
                     NSError *actorError = nil;
                     NSArray *actorObjects = [self.threadContext executeFetchRequest:requestActor error:&actorError];
                     if([actorObjects count] == 0){
-                        
                         //Insert in database
                         Actor * newActor = [NSEntityDescription insertNewObjectForEntityForName:@"Actor" inManagedObjectContext:self.threadContext];
                         newActor.tmdbId = [actors[i][@"id"] intValue];
@@ -121,6 +120,7 @@
     }];
 }
 
+//Method called when all the popular actors are saved in database for the page set in parameter
 -(void)didFinishDownloadForPage:(int)page withError:(NSError *)error{
     if(error != nil){
         self.currentDownloadFailed = YES;
@@ -140,6 +140,7 @@
     }
 }
 
+//Download NB_PAGES_TO_DOWNLOAD pages of poupular actors
 -(void)downloadPopularActors{
     __weak TMDBDownloaderOperation *weakSelf = self;
     for(int page=1; page<=NB_PAGES_TO_DOWNLOAD;page++){
