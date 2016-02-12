@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,17 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DA MOVIE QUIZZ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9z-El-D62">
-                                <rect key="frame" x="180" y="283" width="240" height="35"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DA MOVIE QUIZZ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9z-El-D62">
+                                <rect key="frame" x="91" y="90" width="418" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="50"/>
                                 <color key="textColor" red="1" green="0.98431372549999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.40784313729999999" green="0.73725490199999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.32549019610000002" green="0.43137254899999999" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="s9z-El-D62" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="O7r-iG-mah"/>
-                            <constraint firstItem="s9z-El-D62" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="kNI-Dn-heF"/>
+                            <constraint firstItem="s9z-El-D62" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="59k-ba-7wG"/>
+                            <constraint firstItem="s9z-El-D62" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="72b-J1-2BM"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="s9z-El-D62" secondAttribute="trailing" constant="20" id="IXI-zQ-cZf"/>
+                            <constraint firstItem="s9z-El-D62" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.4" id="Lwu-Nj-byA"/>
                         </constraints>
                     </view>
                 </viewController>

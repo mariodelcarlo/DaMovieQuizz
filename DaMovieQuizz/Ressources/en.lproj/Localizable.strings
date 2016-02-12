@@ -15,7 +15,7 @@
 
 
 //HomeViewController
-"homeViewContollerTitleLabel" = "Da Movie Quizz";
+"homeViewContollerTitleLabel" = "DA MOVIE QUIZZ";
 "homeViewContollerPlayButton" = "Play";
 "homeViewContollerHighScoresButton" = "Highscores";
 
