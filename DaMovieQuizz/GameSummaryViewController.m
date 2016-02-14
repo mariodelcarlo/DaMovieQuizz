@@ -51,23 +51,27 @@
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", @"Ok action") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                 UITextField *textInput = alert.textFields.firstObject;
-                //Save in database and show high scores
-                if(![[DatabaseHelper sharedInstance] saveHighScoreWithPlayerName:textInput.text score:self.numberOfAnswers time:self.secondsSpent]){
-                    //Alert the user
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"gameSummaryNameAlertErrorMessage", @"") preferredStyle:UIAlertControllerStyleAlert];
+            
+            BOOL lastIsDeleted = [[DatabaseHelper sharedInstance] deleteLastHighScoreIfNeeded];
+            BOOL saved = [[DatabaseHelper sharedInstance] saveHighScoreWithPlayerName:textInput.text score:self.numberOfAnswers time:self.secondsSpent];
+            
+            //Save in database and show high scores
+            if(!(lastIsDeleted && saved)){
+                //Alert the user
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"gameSummaryNameAlertErrorMessage", @"") preferredStyle:UIAlertControllerStyleAlert];
                     
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", @"") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", @"") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
                     }];
-                    [alert addAction:okAction];
-                    [self presentViewController:alert animated:YES completion:nil];
-                }
-                else{
-                    //Push High Scores
-                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-                    HighScoresViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"highScoresId"];
-                    [self.navigationController pushViewController:dest animated:YES];
-                }
-            }];
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+            else{
+                //Push High Scores
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+                HighScoresViewController *dest = [storyboard instantiateViewControllerWithIdentifier:@"highScoresId"];
+            [self.navigationController pushViewController:dest animated:YES];
+            }
+        }];
         
         okAction.enabled = NO;
         [alert addAction:cancelAction];

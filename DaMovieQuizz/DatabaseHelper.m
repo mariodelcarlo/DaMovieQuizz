@@ -117,6 +117,25 @@
     return YES;
 }
 
+//Delete the lower high score if there is NUMBER_OF_HIGHSCORES highscores in database
+//return NO if an error occured
+-(BOOL)deleteLastHighScoreIfNeeded{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSArray * highScores = [self getHighScores];
+    if([highScores count] == NUMBER_OF_HIGHSCORES){
+        int lastIndex = (int)highScores.count -1;
+        HighScore * lowHighScore = highScores[lastIndex];
+        [context deleteObject:lowHighScore];
+        NSError * saveError = nil;
+        if([context save:&saveError]){
+            return YES;
+        }
+        return NO;
+    }
+    return YES;
+}
+
 //Returns yes if this score is an high score
 -(BOOL)isAnHighScoreForScore:(NSInteger)theScore time:(NSInteger)theTime{
     if(theScore == 0){
@@ -126,7 +145,7 @@
     if(highScores.count < NUMBER_OF_HIGHSCORES){
         return YES;
     }
-    int lastIndex = highScores.count -1;
+    int lastIndex = (int)highScores.count -1;
     HighScore * lowHighScore = highScores[lastIndex];
     
     if((int)theScore > [lowHighScore.score intValue]){
